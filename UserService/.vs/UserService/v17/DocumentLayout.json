@@ -1,0 +1,394 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D17384AC-C1A9-4C3F-A5BD-0F1862687D3C}|UserService.Models\\UserService.Models.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\userservice.models\\dtos\\userinfodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D17384AC-C1A9-4C3F-A5BD-0F1862687D3C}|UserService.Models\\UserService.Models.csproj|solutionrelative:userservice.models\\dtos\\userinfodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D17384AC-C1A9-4C3F-A5BD-0F1862687D3C}|UserService.Models\\UserService.Models.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\userservice.models\\dtos\\userlogindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D17384AC-C1A9-4C3F-A5BD-0F1862687D3C}|UserService.Models\\UserService.Models.csproj|solutionrelative:userservice.models\\dtos\\userlogindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D17384AC-C1A9-4C3F-A5BD-0F1862687D3C}|UserService.Models\\UserService.Models.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\userservice.models\\dtos\\userregistratedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D17384AC-C1A9-4C3F-A5BD-0F1862687D3C}|UserService.Models\\UserService.Models.csproj|solutionrelative:userservice.models\\dtos\\userregistratedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\web\\extensions\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|solutionrelative:web\\extensions\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BB27514-F018-4963-9F11-8FBA3CF03536}|UserService.Services\\UserService.Services.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\userservice.services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5BB27514-F018-4963-9F11-8FBA3CF03536}|UserService.Services\\UserService.Services.csproj|solutionrelative:userservice.services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BB27514-F018-4963-9F11-8FBA3CF03536}|UserService.Services\\UserService.Services.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\userservice.services\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5BB27514-F018-4963-9F11-8FBA3CF03536}|UserService.Services\\UserService.Services.csproj|solutionrelative:userservice.services\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\web\\userservice.web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|solutionrelative:web\\userservice.web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DD32D43-DE3C-47E0-A6C9-92CE444AD0DC}|UserService.Database\\UserService.Persistance.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\userservice.database\\repositories\\usersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DD32D43-DE3C-47E0-A6C9-92CE444AD0DC}|UserService.Database\\UserService.Persistance.csproj|solutionrelative:userservice.database\\repositories\\usersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DD32D43-DE3C-47E0-A6C9-92CE444AD0DC}|UserService.Database\\UserService.Persistance.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\userservice.database\\repositories\\interfaces\\iusersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DD32D43-DE3C-47E0-A6C9-92CE444AD0DC}|UserService.Database\\UserService.Persistance.csproj|solutionrelative:userservice.database\\repositories\\interfaces\\iusersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\Migrations\\20240309192826_AddedUsers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UserService.Database\\Migrations\\20240309192826_AddedUsers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\web\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|solutionrelative:web\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|solutionrelative:web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\web\\backgroundservices\\databasemigrateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|solutionrelative:web\\backgroundservices\\databasemigrateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DD32D43-DE3C-47E0-A6C9-92CE444AD0DC}|UserService.Database\\UserService.Database.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\userservice.database\\interfaces\\iuserservicedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DD32D43-DE3C-47E0-A6C9-92CE444AD0DC}|UserService.Database\\UserService.Database.csproj|solutionrelative:userservice.database\\interfaces\\iuserservicedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DD32D43-DE3C-47E0-A6C9-92CE444AD0DC}|UserService.Database\\UserService.Database.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\userservice.database\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DD32D43-DE3C-47E0-A6C9-92CE444AD0DC}|UserService.Database\\UserService.Database.csproj|solutionrelative:userservice.database\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DD32D43-DE3C-47E0-A6C9-92CE444AD0DC}|UserService.Database\\UserService.Database.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\userservice.database\\userservicedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DD32D43-DE3C-47E0-A6C9-92CE444AD0DC}|UserService.Database\\UserService.Database.csproj|solutionrelative:userservice.database\\userservicedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DD32D43-DE3C-47E0-A6C9-92CE444AD0DC}|UserService.Database\\UserService.Persistance.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\userservice.database\\userservice.persistance.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{1DD32D43-DE3C-47E0-A6C9-92CE444AD0DC}|UserService.Database\\UserService.Persistance.csproj|solutionrelative:userservice.database\\userservice.persistance.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D17384AC-C1A9-4C3F-A5BD-0F1862687D3C}|UserService.Models\\UserService.Models.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\userservice.models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D17384AC-C1A9-4C3F-A5BD-0F1862687D3C}|UserService.Models\\UserService.Models.csproj|solutionrelative:userservice.models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|solutionrelative:web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\web\\auth\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|solutionrelative:web\\auth\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\web\\auth\\jwttokengenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|solutionrelative:web\\auth\\jwttokengenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|c:\\users\\pc\\desktop\\diploma\\project\\server\\userservice\\web\\auth\\interfaces\\ijwttokengenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FB34FE-5C8A-4C57-A5C9-DE71DE031C42}|Web\\UserService.Web.csproj|solutionrelative:web\\auth\\interfaces\\ijwttokengenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserInfoDto.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Models\\Dtos\\UserInfoDto.cs",
+              "RelativeDocumentMoniker": "UserService.Models\\Dtos\\UserInfoDto.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Models\\Dtos\\UserInfoDto.cs",
+              "RelativeToolTip": "UserService.Models\\Dtos\\UserInfoDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T20:00:32.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "UserService.Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Services\\AuthService.cs",
+              "RelativeToolTip": "UserService.Services\\AuthService.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAIBAwBkAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T19:57:57.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Services\\Interfaces\\IAuthService.cs",
+              "RelativeDocumentMoniker": "UserService.Services\\Interfaces\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Services\\Interfaces\\IAuthService.cs",
+              "RelativeToolTip": "UserService.Services\\Interfaces\\IAuthService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T19:55:44.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\Extensions\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Web\\Extensions\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\Extensions\\DependencyInjection.cs",
+              "RelativeToolTip": "Web\\Extensions\\DependencyInjection.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T19:17:10.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserRegistrateDto.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Models\\Dtos\\UserRegistrateDto.cs",
+              "RelativeDocumentMoniker": "UserService.Models\\Dtos\\UserRegistrateDto.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Models\\Dtos\\UserRegistrateDto.cs",
+              "RelativeToolTip": "UserService.Models\\Dtos\\UserRegistrateDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T19:08:57.108Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserLoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Models\\Dtos\\UserLoginDto.cs",
+              "RelativeDocumentMoniker": "UserService.Models\\Dtos\\UserLoginDto.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Models\\Dtos\\UserLoginDto.cs",
+              "RelativeToolTip": "UserService.Models\\Dtos\\UserLoginDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T19:10:40.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserService.Web.csproj",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\UserService.Web.csproj",
+              "RelativeDocumentMoniker": "Web\\UserService.Web.csproj",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\UserService.Web.csproj",
+              "RelativeToolTip": "Web\\UserService.Web.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-09T15:52:09.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UsersRepository.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\Repositories\\UsersRepository.cs",
+              "RelativeDocumentMoniker": "UserService.Database\\Repositories\\UsersRepository.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\Repositories\\UsersRepository.cs",
+              "RelativeToolTip": "UserService.Database\\Repositories\\UsersRepository.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAAABwAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T19:50:31.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IUsersRepository.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\Repositories\\Interfaces\\IUsersRepository.cs",
+              "RelativeDocumentMoniker": "UserService.Database\\Repositories\\Interfaces\\IUsersRepository.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\Repositories\\Interfaces\\IUsersRepository.cs",
+              "RelativeToolTip": "UserService.Database\\Repositories\\Interfaces\\IUsersRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABNAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T19:49:10.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "20240309192826_AddedUsers.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\Migrations\\20240309192826_AddedUsers.cs",
+              "RelativeDocumentMoniker": "UserService.Database\\Migrations\\20240309192826_AddedUsers.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\Migrations\\20240309192826_AddedUsers.cs",
+              "RelativeToolTip": "UserService.Database\\Migrations\\20240309192826_AddedUsers.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAiwA0AAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T19:28:26.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DatabaseMigrateService.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\BackgroundServices\\DatabaseMigrateService.cs",
+              "RelativeDocumentMoniker": "Web\\BackgroundServices\\DatabaseMigrateService.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\BackgroundServices\\DatabaseMigrateService.cs",
+              "RelativeToolTip": "Web\\BackgroundServices\\DatabaseMigrateService.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAjwBkAAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T19:18:54.567Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IUserServiceDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\Interfaces\\IUserServiceDbContext.cs",
+              "RelativeDocumentMoniker": "UserService.Database\\Interfaces\\IUserServiceDbContext.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\Interfaces\\IUserServiceDbContext.cs",
+              "RelativeToolTip": "UserService.Database\\Interfaces\\IUserServiceDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T18:57:35.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Web\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Web\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T18:41:45.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\Program.cs",
+              "RelativeDocumentMoniker": "Web\\Program.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\Program.cs",
+              "RelativeToolTip": "Web\\Program.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAAACsAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T15:52:24.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UserServiceDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\UserServiceDbContext.cs",
+              "RelativeDocumentMoniker": "UserService.Database\\UserServiceDbContext.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\UserServiceDbContext.cs",
+              "RelativeToolTip": "UserService.Database\\UserServiceDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T18:54:23.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "UserService.Database\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\DependencyInjection.cs",
+              "RelativeToolTip": "UserService.Database\\DependencyInjection.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T18:48:58.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "UserService.Persistance",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\UserService.Persistance.csproj",
+              "RelativeDocumentMoniker": "UserService.Database\\UserService.Persistance.csproj",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Database\\UserService.Persistance.csproj",
+              "RelativeToolTip": "UserService.Database\\UserService.Persistance.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-09T19:00:40.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\Auth\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Web\\Auth\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\Auth\\DependencyInjection.cs",
+              "RelativeToolTip": "Web\\Auth\\DependencyInjection.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAywAAAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T18:08:23.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "JwtTokenGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\Auth\\JwtTokenGenerator.cs",
+              "RelativeDocumentMoniker": "Web\\Auth\\JwtTokenGenerator.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\Auth\\JwtTokenGenerator.cs",
+              "RelativeToolTip": "Web\\Auth\\JwtTokenGenerator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T18:08:12.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Models\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "UserService.Models\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\UserService.Models\\Entities\\User.cs",
+              "RelativeToolTip": "UserService.Models\\Entities\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T18:12:22.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\appsettings.json",
+              "RelativeDocumentMoniker": "Web\\appsettings.json",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\appsettings.json",
+              "RelativeToolTip": "Web\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-09T15:52:24.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "IJwtTokenGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\Auth\\Interfaces\\IJwtTokenGenerator.cs",
+              "RelativeDocumentMoniker": "Web\\Auth\\Interfaces\\IJwtTokenGenerator.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Diploma\\Project\\Server\\UserService\\Web\\Auth\\Interfaces\\IJwtTokenGenerator.cs",
+              "RelativeToolTip": "Web\\Auth\\Interfaces\\IJwtTokenGenerator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T18:16:29.753Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\bin\Debug\net8.0\UserService.Services.deps.json
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\bin\Debug\net8.0\UserService.Services.dll
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\bin\Debug\net8.0\UserService.Services.pdb
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\UserService.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\UserService.Services.AssemblyInfoInputs.cache
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\UserService.Services.AssemblyInfo.cs
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\UserService.Services.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\UserService.Services.dll
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\refint\UserService.Services.dll
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\UserService.Services.pdb
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\ref\UserService.Services.dll
