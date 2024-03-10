@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using UserService.Services.Auth;
+using UserService.Services.Auth.Interfaces;
 using UserService.Web.Auth.Interfaces;
 
 namespace UserService.Auth
@@ -11,6 +15,7 @@ namespace UserService.Auth
             IConfiguration configuration)
         {
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+            services.AddSingleton<IHashService, HashService>();
             services.AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
             {
@@ -21,7 +26,7 @@ namespace UserService.Auth
                 ValidIssuer = "HiveHCM",
                 ValidAudience = "HiveHCM",
                 IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes("da432jkj)d--Dsdjrex756kkl7u555"))
+                    Encoding.UTF8.GetBytes("4e2rqTE5UYIJOPHGBFLDKSJNHY2T3RWEFU382dajafeoiskd"))
             });
 
             return services;

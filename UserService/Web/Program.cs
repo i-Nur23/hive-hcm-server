@@ -2,6 +2,7 @@ using Microsoft.OpenApi.Models;
 using UserService.Auth;
 using UserService.Persistance;
 using UserService.Web.Extensions;
+using UserService.Web.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +56,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 app.UseAuthentication();
+
+app.UseCustomMiddlewares();
 
 app.MapControllers();
 

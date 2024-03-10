@@ -13,7 +13,8 @@
           "Microsoft.IdentityModel.Tokens": "7.4.0",
           "Swashbuckle.AspNetCore": "6.4.0",
           "UserService.Models": "1.0.0",
-          "UserService.Persistance": "1.0.0"
+          "UserService.Persistance": "1.0.0",
+          "UserService.Services": "1.0.0"
         },
         "runtime": {
           "UserService.Web.dll": {}
@@ -905,6 +906,16 @@
         "runtime": {
           "UserService.Persistance.dll": {}
         }
+      },
+      "UserService.Services/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.2",
+          "UserService.Models": "1.0.0",
+          "UserService.Persistance": "1.0.0"
+        },
+        "runtime": {
+          "UserService.Services.dll": {}
+        }
       }
     }
   },
@@ -1459,6 +1470,11 @@
       "sha512": ""
     },
     "UserService.Persistance/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UserService.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

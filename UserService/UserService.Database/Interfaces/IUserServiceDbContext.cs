@@ -13,6 +13,6 @@ namespace UserService.Persistance.Interfaces
 
         public Task MigrateDatabaseAsync(CancellationToken cancellationToken = default);
 
-        public DatabaseFacade Database { get; set; }
+        public DatabaseFacade Database { get; }
     }
 }

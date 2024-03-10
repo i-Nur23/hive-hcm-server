@@ -9,3 +9,10 @@ C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\
 C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\refint\UserService.Services.dll
 C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\UserService.Services.pdb
 C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\ref\UserService.Services.dll
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\UserService.Services.csproj.AssemblyReference.cache
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\UserService.Services.sourcelink.json
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\bin\Debug\net8.0\UserService.Models.dll
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\bin\Debug\net8.0\UserService.Persistance.dll
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\bin\Debug\net8.0\UserService.Persistance.pdb
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\bin\Debug\net8.0\UserService.Models.pdb
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\UserServ.1CAD3045.Up2Date

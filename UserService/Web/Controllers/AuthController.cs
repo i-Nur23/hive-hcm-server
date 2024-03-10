@@ -1,26 +1,36 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using UserService.Models.Dtos;
+using UserService.Services.Interfaces;
 
 namespace UserService.Web.Controllers
 {
-    [AllowAnonymous]
+    [ApiController]
+    [Route("api/auth")]
     public class AuthController : ControllerBase
     {
-        [HttpPost]
-        public async Task<IActionResult> Registrate([FromBody] UserRegistrateDto registrateDto)
+        private readonly IAuthService _authService;
+        public AuthController(
+            IAuthService authService)
         {
-
-            return Ok();
+            _authService = authService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] UserRegistrateDto registrateDto)
+        [Route("registrate")]
+        public async Task<IActionResult> Registrate([FromBody] UserRegistrateDto registrateDto)
         {
+            UserInfoDto userInfo = await _authService.RegistrateAsync(registrateDto);
 
+            return Ok(userInfo);
+        }
 
-            return Ok();
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> Login([FromBody] UserLoginDto loginDto)
+        {
+            UserInfoDto userInfo = await _authService.LoginAsync(loginDto);
+
+            return Ok(userInfo);
         }
 
     }

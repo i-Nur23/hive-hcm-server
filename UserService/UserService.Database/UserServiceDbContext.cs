@@ -8,7 +8,6 @@ namespace UserService.Persistance
     public class UserServiceDbContext : DbContext, IUserServiceDbContext
     {
         public DbSet<User> Users { get; set; }
-        DatabaseFacade IUserServiceDbContext.Database { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public UserServiceDbContext(DbContextOptions<UserServiceDbContext> options) 
             : base(options) { }

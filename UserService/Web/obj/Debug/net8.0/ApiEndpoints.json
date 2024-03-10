@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "ContainingType": "UserService.Web.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "UserService.Models.Dtos.UserLoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserService.Web.Controllers.AuthController",
+    "Method": "Registrate",
+    "RelativePath": "api/auth/registrate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrateDto",
+        "Type": "UserService.Models.Dtos.UserRegistrateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

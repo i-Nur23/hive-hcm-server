@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UserService.Persistance.Interfaces;
+using UserService.Persistance.Repositories;
+using UserService.Persistance.Repositories.Interfaces;
 
 namespace UserService.Persistance
 {
@@ -19,6 +21,7 @@ namespace UserService.Persistance
             });
 
             services.AddScoped<IUserServiceDbContext, UserServiceDbContext>();
+            services.AddScoped<IDatabaseRepository, DatabaseRepository>();
 
             return services;
         } 

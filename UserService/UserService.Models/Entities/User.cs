@@ -1,4 +1,6 @@
-﻿namespace UserService.Models.Entities
+﻿using UserService.Models.Enums;
+
+namespace UserService.Models.Entities
 {
     public class User
     {
@@ -11,5 +13,7 @@
         public string Email { get; set; }
 
         public string Password { get; set; }
+
+        public Role Role { get; set; }
     }
 }

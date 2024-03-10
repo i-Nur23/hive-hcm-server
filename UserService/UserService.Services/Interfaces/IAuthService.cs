@@ -9,11 +9,11 @@ namespace UserService.Services.Interfaces
 {
     public interface IAuthService
     {
-        public Task<string> RegistrateAsync(
+        public Task<UserInfoDto> RegistrateAsync(
             UserRegistrateDto registrateDto,
             CancellationToken cancellationToken = default);
 
-        public Task<string> LoginAsync(
+        public Task<UserInfoDto> LoginAsync(
             UserLoginDto loginDto,
             CancellationToken cancellationToken = default);
     }
