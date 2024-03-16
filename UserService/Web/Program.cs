@@ -13,6 +13,16 @@ var services = builder.Services;
 services.AddDatabase(builder.Configuration);
 services.AddAuth(builder.Configuration);
 
+services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyHeader();
+        policy.AllowAnyMethod();
+        policy.AllowAnyOrigin();
+    });
+});
+
 services.AddControllers();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen(option =>
@@ -58,6 +68,8 @@ app.UseAuthorization();
 app.UseAuthentication();
 
 app.UseCustomMiddlewares();
+
+app.UseCors("AllowAll");
 
 app.MapControllers();
 

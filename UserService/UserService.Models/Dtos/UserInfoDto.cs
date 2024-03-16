@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UserService.Models.Dtos
+﻿namespace UserService.Models.Dtos
 {
     public class UserInfoDto
     {
@@ -12,7 +6,7 @@ namespace UserService.Models.Dtos
 
         public string Name { get; set; } 
         
-        private string Surname { get; set; }
+        public string Surname { get; set; }
 
         public string Email { get; set; }
 

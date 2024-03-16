@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using UserService.Models.Dtos;
 using UserService.Services.Interfaces;
 
@@ -16,6 +17,7 @@ namespace UserService.Web.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [Route("registrate")]
         public async Task<IActionResult> Registrate([FromBody] UserRegistrateDto registrateDto)
         {
@@ -25,6 +27,7 @@ namespace UserService.Web.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] UserLoginDto loginDto)
         {
