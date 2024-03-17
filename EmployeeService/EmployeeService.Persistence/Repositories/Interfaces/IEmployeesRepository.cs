@@ -8,5 +8,9 @@ namespace EmployeeService.Persistence.Repositories.Interfaces
         public Task<Employee?> GetAsync(
             Predicate<Employee> condition,
             CancellationToken cancellationToken = default);
+
+        public Task AddAsync(
+            Employee employee,
+            CancellationToken cancellationToken = default);
     }
 }

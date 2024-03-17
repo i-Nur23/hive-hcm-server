@@ -1,4 +1,6 @@
-﻿namespace UserService.Models.Exceptions
+﻿using Core.Exceptions;
+
+namespace UserService.Models.Exceptions
 {
     public class UserExistsException : BadRequestException
     {

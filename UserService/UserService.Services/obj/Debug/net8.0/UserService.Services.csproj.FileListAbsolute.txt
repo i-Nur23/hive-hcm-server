@@ -16,3 +16,5 @@ C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\bin\
 C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\bin\Debug\net8.0\UserService.Persistance.pdb
 C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\bin\Debug\net8.0\UserService.Models.pdb
 C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\obj\Debug\net8.0\UserServ.1CAD3045.Up2Date
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\bin\Debug\net8.0\Core.dll
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Services\bin\Debug\net8.0\Core.pdb

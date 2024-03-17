@@ -10,3 +10,7 @@ C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Models\obj\De
 C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Models\obj\Debug\net8.0\UserService.Models.pdb
 C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Models\obj\Debug\net8.0\ref\UserService.Models.dll
 C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Models\obj\Debug\net8.0\UserService.Models.sourcelink.json
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Models\bin\Debug\net8.0\Core.dll
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Models\bin\Debug\net8.0\Core.pdb
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Models\obj\Debug\net8.0\UserService.Models.csproj.AssemblyReference.cache
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Models\obj\Debug\net8.0\UserServ.AE4145A0.Up2Date

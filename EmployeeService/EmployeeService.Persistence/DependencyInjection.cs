@@ -19,7 +19,7 @@ namespace EmployeeService.Persistence
                 options.UseNpgsql(connectionString);
             });
 
-            services.AddSingleton<IEmployeeServiceDbContext, EmployeeServiceDbContext>();
+            services.AddScoped<IEmployeeServiceDbContext, EmployeeServiceDbContext>();
 
             services.AddRepositories();
 

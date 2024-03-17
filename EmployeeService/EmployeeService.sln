@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeService.API", "EmployeeService.API\EmployeeService.API.csproj", "{25584F77-44B5-42C6-B516-F21C083C7C20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeService.API", "EmployeeService.API\EmployeeService.API.csproj", "{25584F77-44B5-42C6-B516-F21C083C7C20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeService.Models", "EmployeeService.Models\EmployeeService.Models.csproj", "{6E48757D-3F0E-4404-8D1A-0CD8E7A3DEE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeService.Models", "EmployeeService.Models\EmployeeService.Models.csproj", "{6E48757D-3F0E-4404-8D1A-0CD8E7A3DEE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeService.Persistence", "EmployeeService.Persistence\EmployeeService.Persistence.csproj", "{EC116C97-241D-4F33-85C0-6BB113CFD752}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeService.Persistence", "EmployeeService.Persistence\EmployeeService.Persistence.csproj", "{EC116C97-241D-4F33-85C0-6BB113CFD752}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeService.Application", "EmployeeService.Application\EmployeeService.Application.csproj", "{79C37DCC-942C-4111-A2BF-7078379187CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeService.Application", "EmployeeService.Application\EmployeeService.Application.csproj", "{79C37DCC-942C-4111-A2BF-7078379187CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "..\Core\Core\Core.csproj", "{2A4C52A4-9652-4C10-BCA9-65949E6E5C31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{79C37DCC-942C-4111-A2BF-7078379187CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79C37DCC-942C-4111-A2BF-7078379187CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79C37DCC-942C-4111-A2BF-7078379187CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A4C52A4-9652-4C10-BCA9-65949E6E5C31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A4C52A4-9652-4C10-BCA9-65949E6E5C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A4C52A4-9652-4C10-BCA9-65949E6E5C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A4C52A4-9652-4C10-BCA9-65949E6E5C31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

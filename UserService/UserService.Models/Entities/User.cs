@@ -1,4 +1,4 @@
-﻿using UserService.Models.Enums;
+﻿using Core.Enums;
 
 namespace UserService.Models.Entities
 {

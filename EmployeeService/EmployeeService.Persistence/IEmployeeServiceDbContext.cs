@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace EmployeeService.Persistence
 {
-    public interface IEmployeeServiceDbContext
+    public interface IEmployeeServiceDbContext : IDisposable
     {
         public DbSet<Employee> Employees { get; }
 
@@ -13,6 +13,8 @@ namespace EmployeeService.Persistence
         public DbSet<Unit> Units { get; }
 
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+
+        public Task MigrateDatabaseAsync(CancellationToken cancellationToken = default);
 
         public DatabaseFacade Database { get; }
     }

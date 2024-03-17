@@ -1,13 +1,11 @@
-﻿using Azure.Core;
-using Microsoft.EntityFrameworkCore;
-using UserService.Models.Dtos;
+﻿using UserService.Models.Dtos;
 using UserService.Models.Entities;
-using UserService.Models.Enums;
 using UserService.Models.Exceptions;
 using UserService.Persistance.Repositories.Interfaces;
 using UserService.Services.Auth.Interfaces;
 using UserService.Services.Interfaces;
 using UserService.Web.Auth.Interfaces;
+using Core.Enums;
 
 namespace UserService.Services
 {
@@ -93,6 +91,7 @@ namespace UserService.Services
                     CompanyName = registrateDto.CompanyName,
                     Id = newUser.Id,
                     Name = registrateDto.Name,
+                    Surname = registrateDto.Surname,
                     Token = token
                 };
 

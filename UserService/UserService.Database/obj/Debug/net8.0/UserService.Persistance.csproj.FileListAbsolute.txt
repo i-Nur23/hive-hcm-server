@@ -16,3 +16,5 @@ C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Database\obj\
 C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Database\obj\Debug\net8.0\UserService.Persistance.genruntimeconfig.cache
 C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Database\obj\Debug\net8.0\ref\UserService.Persistance.dll
 C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Database\obj\Debug\net8.0\UserService.Persistance.sourcelink.json
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Database\bin\Debug\net8.0\Core.dll
+C:\Users\PC\Desktop\Diploma\Project\Server\UserService\UserService.Database\bin\Debug\net8.0\Core.pdb
