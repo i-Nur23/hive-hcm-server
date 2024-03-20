@@ -2,9 +2,9 @@
 {
     public class EmployeeUnit
     {
-        public int UnitId { get; set; }
+        public Guid UnitId { get; set; }
 
-        public int EmployeeId { get; set; }
+        public Guid EmployeeId { get; set; }
 
         public Unit Unit { get; set; }
 

@@ -11,6 +11,8 @@ namespace EmployeeService.Persistence
 
         public DbSet<Unit> Units { get; set; }
 
+        public DbSet<EmployeeUnit> EmployeeUnits { get; set; }
+
         public EmployeeServiceDbContext(DbContextOptions<EmployeeServiceDbContext> contextOptions)
             : base(contextOptions) { }
 

@@ -17,11 +17,12 @@ namespace EmployeeService.Persistence.Repositories
             CancellationToken cancellationToken = default)
         {
             await _dbContext.Employees.AddAsync(employee, cancellationToken);
+            
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
         public async Task<Employee?> GetAsync(
-            Predicate<Employee> condition, 
+            Predicate<Employee> condition,
             CancellationToken cancellationToken = default)
         {
             if (condition is null)

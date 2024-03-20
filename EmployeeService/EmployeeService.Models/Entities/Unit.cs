@@ -4,17 +4,17 @@ namespace EmployeeService.Models.Entities
 {
     public class Unit
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
 
         [ForeignKey("Company")]
-        public int CompanyId { get; set; }
+        public Guid CompanyId { get; set; }
 
         [ForeignKey("Lead")]
-        public int LeadId { get; set; }
+        public Guid LeadId { get; set; }
 
         [ForeignKey("ParentUnit")]
-        public int? ParentUnitId { get; set; }
+        public Guid? ParentUnitId { get; set; }
 
         public Employee Lead { get; set; }
 

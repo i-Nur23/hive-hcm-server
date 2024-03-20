@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EmployeeService.Persistence.Migrations
 {
     [DbContext(typeof(EmployeeServiceDbContext))]
-    [Migration("20240317192757_ChangeParentUnitIdToNullable")]
-    partial class ChangeParentUnitIdToNullable
+    [Migration("20240320182536_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,9 @@ namespace EmployeeService.Persistence.Migrations
 
             modelBuilder.Entity("EmployeeService.Models.Entities.Company", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -44,11 +42,9 @@ namespace EmployeeService.Persistence.Migrations
 
             modelBuilder.Entity("EmployeeService.Models.Entities.Employee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("AvatarUrl")
                         .HasColumnType("text");
@@ -90,39 +86,37 @@ namespace EmployeeService.Persistence.Migrations
 
             modelBuilder.Entity("EmployeeService.Models.Entities.EmployeeUnit", b =>
                 {
-                    b.Property<int>("UnitId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("UnitId")
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("UnitId", "EmployeeId");
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("EmployeeUnit");
+                    b.ToTable("EmployeeUnits");
                 });
 
             modelBuilder.Entity("EmployeeService.Models.Entities.Unit", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("CompanyId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("LeadId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("LeadId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("ParentUnitId")
-                        .HasColumnType("integer");
+                    b.Property<Guid?>("ParentUnitId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 

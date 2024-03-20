@@ -32,15 +32,15 @@ namespace EmployeeService.Application.Services
                     Name = newCeo.CompanyName,
                 };
 
-                Employee ceo = new Employee() 
-                { 
+                Employee ceo = new Employee()
+                {
                     Email = newCeo.Email,
                     Id = newCeo.Id,
                     Name = newCeo.Name,
                     Surname = newCeo.Surname,
                     Units = new List<Unit>
                     {
-                        new Unit 
+                        new Unit
                         {
                             Name = "Корневое подразделение",
                             LeadId = newCeo.Id,

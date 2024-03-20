@@ -12,6 +12,8 @@ namespace EmployeeService.Persistence
 
         public DbSet<Unit> Units { get; }
 
+        public DbSet<EmployeeUnit> EmployeeUnits { get; set; }
+
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
         public Task MigrateDatabaseAsync(CancellationToken cancellationToken = default);

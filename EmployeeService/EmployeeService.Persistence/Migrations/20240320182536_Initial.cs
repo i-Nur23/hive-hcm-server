@@ -1,13 +1,12 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace EmployeeService.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,8 +15,7 @@ namespace EmployeeService.Persistence.Migrations
                 name: "Companies",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -29,8 +27,7 @@ namespace EmployeeService.Persistence.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Surname = table.Column<string>(type: "text", nullable: false),
                     Patronimic = table.Column<string>(type: "text", nullable: true),
@@ -51,10 +48,11 @@ namespace EmployeeService.Persistence.Migrations
                 name: "Units",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    CompanyId = table.Column<int>(type: "integer", nullable: false)
+                    CompanyId = table.Column<Guid>(type: "uuid", nullable: false),
+                    LeadId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ParentUnitId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -65,26 +63,37 @@ namespace EmployeeService.Persistence.Migrations
                         principalTable: "Companies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Units_Employees_LeadId",
+                        column: x => x.LeadId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Units_Units_ParentUnitId",
+                        column: x => x.ParentUnitId,
+                        principalTable: "Units",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "EmployeeUnit",
+                name: "EmployeeUnits",
                 columns: table => new
                 {
-                    UnitId = table.Column<int>(type: "integer", nullable: false),
-                    EmployeeId = table.Column<int>(type: "integer", nullable: false)
+                    UnitId = table.Column<Guid>(type: "uuid", nullable: false),
+                    EmployeeId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EmployeeUnit", x => new { x.UnitId, x.EmployeeId });
+                    table.PrimaryKey("PK_EmployeeUnits", x => new { x.UnitId, x.EmployeeId });
                     table.ForeignKey(
-                        name: "FK_EmployeeUnit_Employees_EmployeeId",
+                        name: "FK_EmployeeUnits_Employees_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EmployeeUnit_Units_UnitId",
+                        name: "FK_EmployeeUnits_Units_UnitId",
                         column: x => x.UnitId,
                         principalTable: "Units",
                         principalColumn: "Id",
@@ -92,30 +101,40 @@ namespace EmployeeService.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeUnit_EmployeeId",
-                table: "EmployeeUnit",
+                name: "IX_EmployeeUnits_EmployeeId",
+                table: "EmployeeUnits",
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Units_CompanyId",
                 table: "Units",
                 column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Units_LeadId",
+                table: "Units",
+                column: "LeadId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Units_ParentUnitId",
+                table: "Units",
+                column: "ParentUnitId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "EmployeeUnit");
-
-            migrationBuilder.DropTable(
-                name: "Employees");
+                name: "EmployeeUnits");
 
             migrationBuilder.DropTable(
                 name: "Units");
 
             migrationBuilder.DropTable(
                 name: "Companies");
+
+            migrationBuilder.DropTable(
+                name: "Employees");
         }
     }
 }
