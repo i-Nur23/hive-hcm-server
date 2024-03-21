@@ -3,6 +3,7 @@ using System;
 using EmployeeService.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EmployeeService.Persistence.Migrations
 {
     [DbContext(typeof(EmployeeServiceDbContext))]
-    partial class EmployeeServiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240321192815_AddedCountriesTable")]
+    partial class AddedCountriesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,7 +80,7 @@ namespace EmployeeService.Persistence.Migrations
                     b.Property<string>("City")
                         .HasColumnType("text");
 
-                    b.Property<int?>("CountryCode")
+                    b.Property<int>("CountryCode")
                         .HasColumnType("integer");
 
                     b.Property<string>("Email")
@@ -157,7 +160,9 @@ namespace EmployeeService.Persistence.Migrations
                 {
                     b.HasOne("EmployeeService.Models.Entities.Country", "Country")
                         .WithMany()
-                        .HasForeignKey("CountryCode");
+                        .HasForeignKey("CountryCode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Country");
                 });

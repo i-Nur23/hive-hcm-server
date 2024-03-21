@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Hosting;
 using ScrapersService.Countries;
 
 namespace ScrapersService.Main;
@@ -15,6 +14,5 @@ class Program
         IHost app = builder.Build();
 
         await app.RunAsync();
-
     }
 }

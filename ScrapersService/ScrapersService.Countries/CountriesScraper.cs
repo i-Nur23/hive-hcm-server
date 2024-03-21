@@ -1,7 +1,8 @@
-﻿using MassTransit;
+﻿using Core.Dtos.Scrapers.Countries;
+using Core.Events;
+using MassTransit;
 using Microsoft.Extensions.Hosting;
 using ScrapersService.Countries.Clients.Interfaces;
-using ScrapersService.Countries.Dtos;
 using System.ComponentModel;
 
 namespace ScrapersService.Countries
@@ -21,7 +22,12 @@ namespace ScrapersService.Countries
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            IEnumerable<CountryInfo> countries = await _countriesClient.GetAllAsync(stoppingToken);
+            IEnumerable<CountryDto> countries = await _countriesClient.GetAllAsync(stoppingToken);
+
+            await _publishEndpoint.Publish(new CountriesScrapedEvent()
+            {
+                Countries = countries
+            });
 
             await Task.Delay(TimeSpan.FromDays(7));
         }

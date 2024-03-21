@@ -1,4 +1,5 @@
 ﻿using Core.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EmployeeService.Models.Entities
 {
@@ -20,9 +21,12 @@ namespace EmployeeService.Models.Entities
 
         public string? City { get; set; }
 
-        public string? Country { get; set; }
-
         public string? AvatarUrl { get; set; }
+
+        public int? CountryCode { get; set; }
+
+        [ForeignKey("CountryCode")]
+        public Country? Country { get; set; }
 
         public ICollection<Unit> Units { get; set; }
 

@@ -13,6 +13,8 @@ namespace EmployeeService.Persistence
 
         public DbSet<EmployeeUnit> EmployeeUnits { get; set; }
 
+        public DbSet<Country> Countries { get; set; }
+
         public EmployeeServiceDbContext(DbContextOptions<EmployeeServiceDbContext> contextOptions)
             : base(contextOptions) { }
 

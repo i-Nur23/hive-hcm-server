@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Core.Dtos.Scrapers.Countries;
 
 namespace Core.Events
 {
-    internal class CountriesScrapedEvent
+    public class CountriesScrapedEvent
     {
+        public IEnumerable<CountryDto> Countries { get; set; }
     }
 }

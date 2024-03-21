@@ -10,6 +10,8 @@ namespace ScrapersService.Countries
         public static IServiceCollection RegisterCountriesScraper(
             this IServiceCollection services)
         {
+            services.AddHttpClient();
+
             services.AddScoped<ICountriesClient, CountriesClient>();
 
             services.AddHostedService<CountriesScraper>();

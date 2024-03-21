@@ -12,7 +12,9 @@ namespace EmployeeService.Persistence
 
         public DbSet<Unit> Units { get; }
 
-        public DbSet<EmployeeUnit> EmployeeUnits { get; set; }
+        public DbSet<EmployeeUnit> EmployeeUnits { get; }
+
+        public DbSet<Country> Countries { get; }
 
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 

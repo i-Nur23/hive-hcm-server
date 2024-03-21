@@ -30,6 +30,7 @@ services.AddSwaggerGen();
 services.AddMassTransit(x =>
 {
     x.AddConsumer<CreateCompanyConsumer>();
+    x.AddConsumer<CountriesScrapedConsumer>();
 
     x.UsingRabbitMq((context, cfg) =>
     {
