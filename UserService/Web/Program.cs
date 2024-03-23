@@ -4,6 +4,7 @@ using UserService.Persistance;
 using UserService.Web.Extensions;
 using Core.Middlewares;
 using MassTransit;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,7 +51,7 @@ services.AddSwaggerGen(option =>
                     },
                     new string[] {}
                 }
-            });
+    });
 });
 
 services.AddRepositories();
@@ -79,13 +80,25 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseCustomMiddlewares();
 
 app.UseCors("AllowAll");
 
 app.MapControllers();
+
+app.Use(async (context, next) =>
+{
+    try
+    {
+        await next();
+    }
+    catch (SecurityTokenInvalidSignatureException ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+});
 
 app.Run();

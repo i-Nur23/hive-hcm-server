@@ -6,7 +6,7 @@ namespace EmployeeService.Persistence.Repositories.Interfaces
     public interface IEmployeesRepository
     {
         public Task<Employee?> GetAsync(
-            Predicate<Employee> condition,
+            Expression<Func<Employee, bool>> condition,
             CancellationToken cancellationToken = default);
 
         public Task AddAsync(

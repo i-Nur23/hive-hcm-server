@@ -1,6 +1,7 @@
 ﻿using EmployeeService.Models.Entities;
 using EmployeeService.Persistence.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace EmployeeService.Persistence.Repositories
 {
@@ -22,7 +23,7 @@ namespace EmployeeService.Persistence.Repositories
         }
 
         public async Task<Employee?> GetAsync(
-            Predicate<Employee> condition,
+            Expression<Func<Employee, bool>> condition,
             CancellationToken cancellationToken = default)
         {
             if (condition is null)
@@ -32,7 +33,7 @@ namespace EmployeeService.Persistence.Repositories
 
             return await _dbContext.Employees
                 .FirstOrDefaultAsync(
-                    employee => condition.Invoke(employee), cancellationToken)
+                    condition, cancellationToken)
                 .ConfigureAwait(false);
         }
     }

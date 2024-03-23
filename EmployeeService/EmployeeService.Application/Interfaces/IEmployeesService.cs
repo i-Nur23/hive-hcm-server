@@ -6,7 +6,7 @@ namespace EmployeeService.Application.Interfaces
     public interface IEmployeesService
     {
         public Task<Employee> GetEmployeeByIdAsync(
-            int id,
+            Guid id,
             CancellationToken cancellationToken = default
         );
 

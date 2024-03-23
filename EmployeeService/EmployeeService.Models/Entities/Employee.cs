@@ -34,6 +34,9 @@ namespace EmployeeService.Models.Entities
 
         public List<EmployeeUnit> EmployeeUnits { get; set; }
 
-        public Role Role { get; set; }
+        public Role RoleType { get; set; }
+
+        [NotMapped]
+        public string Role => $"{RoleType}";
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -13,22 +14,20 @@ namespace UserService.Auth
         {
             var signingCredentials = new SigningCredentials(
             new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes("4e2rqTE5UYIJOPHGBFLDKSJNHY2T3RWEFU382dajafeoiskd")),
+                Encoding.UTF8.GetBytes("wqy8-2.cyEP{shJ1sp2r45TyuIU345]{mmadDG")),
             SecurityAlgorithms.HmacSha256);
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.GivenName, user.Name),
-                new Claim(JwtRegisteredClaimNames.FamilyName, user.Surname),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.Role, $"{user.Role}"),
-                null
+                new Claim(ClaimTypes.Name, user.Name),
+                new Claim(ClaimTypes.Surname, user.Surname),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Role, user.Role)
             };
 
             var securityToken = new JwtSecurityToken(
-                issuer: "HiveHCM",
-                audience: "HiveHCM",
+                issuer: "HiveHCM_Server",
+                audience: "HiveHCM_Client",
                 expires: DateTime.UtcNow.AddDays(30),
                 claims: claims,
                 signingCredentials: signingCredentials);

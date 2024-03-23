@@ -50,6 +50,7 @@ namespace UserService.Services
                 Email = user.Email,
                 Id = user.Id,
                 Name = user.Name,
+                Surname = user.Surname,
                 Token = token
             };
 
@@ -77,9 +78,8 @@ namespace UserService.Services
                     Email = registrateDto.Email,
                     Password = await _hashService.CreateHashAsync(registrateDto.Password, cancellationToken),
                     Surname = registrateDto.Surname,
-                    Role = Role.CEO,
+                    RoleType = Role.CEO,
                 };
-
 
                 await _usersRepository.AddAsync(newUser, cancellationToken);
 

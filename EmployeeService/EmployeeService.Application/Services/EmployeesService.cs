@@ -47,7 +47,7 @@ namespace EmployeeService.Application.Services
                             Company = company,
                         }
                     },
-                    Role = Role.CEO
+                    RoleType = Role.CEO
                 };
 
                 await _employeesRepository.AddAsync(ceo, cancellationToken);
@@ -60,7 +60,9 @@ namespace EmployeeService.Application.Services
             }
         }
 
-        public async Task<Employee> GetEmployeeByIdAsync(int id, CancellationToken cancellationToken = default)
+        public async Task<Employee> GetEmployeeByIdAsync(
+            Guid id, 
+            CancellationToken cancellationToken = default)
         {
             try
             {

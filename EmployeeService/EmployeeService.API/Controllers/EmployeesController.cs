@@ -1,10 +1,12 @@
 ﻿using EmployeeService.Application.Interfaces;
 using EmployeeService.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeService.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
+    [Route("api/employees")]
     [ApiController]
     public class EmployeesController : ControllerBase
     {
@@ -17,7 +19,7 @@ namespace EmployeeService.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetEmployee(int id)
+        public async Task<IActionResult> GetEmployee(Guid id)
         {
             Employee employee =  await _employeesService.GetEmployeeByIdAsync(id);
 
