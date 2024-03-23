@@ -5,6 +5,7 @@ using UserService.Web.Extensions;
 using Core.Middlewares;
 using MassTransit;
 using Microsoft.IdentityModel.Tokens;
+using Core.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,6 +60,8 @@ services.AddServices();
 
 services.AddMassTransit(x =>
 {
+    x.AddRequestClient<UserUpdatedEvent>();
+
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host("localhost", "/", h =>

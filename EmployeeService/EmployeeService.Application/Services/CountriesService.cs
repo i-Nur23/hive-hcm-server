@@ -49,5 +49,11 @@ namespace EmployeeService.Application.Services
                 await _databaseRepository.RollbackTransactionAsync(cancellationToken);
             }
         }
+
+        public async Task<List<Country>> GetAllAsync(
+            CancellationToken cancellationToken = default)
+        {
+            return await _countriesRepository.GetAllAsync(cancellationToken); 
+        }
     }
 }

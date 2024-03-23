@@ -47,11 +47,12 @@ namespace UserService.Services
 
             var userInfo = new UserInfoDto()
             {
-                Email = user.Email,
+                Email = loginDto.Email,
                 Id = user.Id,
                 Name = user.Name,
                 Surname = user.Surname,
-                Token = token
+                Token = token,
+                Role = user.Role
             };
 
             return userInfo;
@@ -92,7 +93,8 @@ namespace UserService.Services
                     Id = newUser.Id,
                     Name = registrateDto.Name,
                     Surname = registrateDto.Surname,
-                    Token = token
+                    Token = token,
+                    Role = "CEO"
                 };
 
                 await _databaseRepository.CommitTransactionAsync();

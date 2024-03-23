@@ -7,5 +7,8 @@ namespace EmployeeService.Application.Interfaces
         public Task AddOrUpdateAsync(
             List<Country> countries,
             CancellationToken cancellationToken = default);
+
+        public Task<List<Country>> GetAllAsync(
+            CancellationToken cancellationToken = default);
     }
 }

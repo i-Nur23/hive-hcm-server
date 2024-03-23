@@ -23,6 +23,13 @@ namespace EmployeeService.Persistence.Repositories
             await _employeeServiceDbContext.SaveChangesAsync(cancellationToken);
         }
 
+        public async Task<List<Country>> GetAllAsync(CancellationToken cancellationToken = default)
+        {
+            return await _employeeServiceDbContext.Countries
+                .OrderBy(c => c.Name)
+                .ToListAsync();
+        }
+
         public async Task<List<int>> GetAllIsoCodes(CancellationToken cancellationToken = default)
         {
             return await _employeeServiceDbContext.Countries

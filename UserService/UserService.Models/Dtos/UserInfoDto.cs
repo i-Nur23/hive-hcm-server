@@ -13,5 +13,7 @@
         public string CompanyName {  get; set; }
         
         public string Token { get; set; }
+
+        public string Role {  get; set; }
     }
 }

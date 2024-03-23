@@ -12,5 +12,9 @@ namespace EmployeeService.Persistence.Repositories.Interfaces
         public Task AddAsync(
             Employee employee,
             CancellationToken cancellationToken = default);
+
+        public Task UpdateAsync(
+            Employee employee,
+            CancellationToken cancellationToken = default);
     }
 }

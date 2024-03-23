@@ -61,6 +61,7 @@ services.AddMassTransit(x =>
 {
     x.AddConsumer<CreateCompanyConsumer>();
     x.AddConsumer<CountriesScrapedConsumer>();
+    x.AddConsumer<UserUpdatedConsumer>();
 
     x.UsingRabbitMq((context, cfg) =>
     {

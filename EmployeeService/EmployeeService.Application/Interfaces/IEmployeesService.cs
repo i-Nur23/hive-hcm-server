@@ -10,6 +10,10 @@ namespace EmployeeService.Application.Interfaces
             CancellationToken cancellationToken = default
         );
 
+        public Task UpdateAsync(
+            UserUpdatedEvent userUpdated,
+            CancellationToken cancellationToken = default);
+
         public Task AddCeoAsync(
             CompanyCreatedEvent newCeo,
             CancellationToken cancellationToken = default);

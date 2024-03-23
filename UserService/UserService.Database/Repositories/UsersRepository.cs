@@ -26,5 +26,21 @@ namespace UserService.Persistance.Repositories
             return 
                 await _dbContext.Users.FirstOrDefaultAsync(user => user.Email.Equals(email));
         }
+
+        public async Task<User> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        {
+            return
+                await _dbContext.Users.FirstOrDefaultAsync(user => user.Id.Equals(id));
+        }
+
+        public async Task UpdateAsync(User user, CancellationToken cancellationToken)
+        {
+            _dbContext.Users.Update(user);
+
+            await _dbContext
+                .SaveChangesAsync(cancellationToken)
+                .ConfigureAwait(false);
+
+        }
     }
 }

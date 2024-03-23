@@ -1,5 +1,6 @@
 ﻿using Core.Enums;
 using Core.Events;
+using Core.Exceptions;
 using EmployeeService.Application.Interfaces;
 using EmployeeService.Models.Entities;
 using EmployeeService.Persistence.Repositories.Interfaces;
@@ -82,6 +83,42 @@ namespace EmployeeService.Application.Services
             }
 
             return null;
+        }
+
+        public async Task UpdateAsync(
+            UserUpdatedEvent userUpdated, 
+            CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                await _databaseRepository.BeginTransactionAsync(cancellationToken);
+
+                Employee employee = await _employeesRepository.GetAsync(e => e.Id.Equals(userUpdated.UserId));
+
+                if (employee is null)
+                {
+                    throw new NotFoundException("Пользователь не найден");
+                }
+
+                employee.BirthDate = userUpdated.BirthDate;
+                employee.Email = userUpdated.Email;
+                employee.Name = userUpdated.Surname;
+                employee.Patronimic = userUpdated.Patronymic;
+                employee.PhoneNumber = userUpdated.PhoneNumber;
+                employee.City = userUpdated.City;
+                employee.CountryCode = userUpdated.CountryCode;
+                employee.Surname = userUpdated.Surname;
+
+                await _employeesRepository.UpdateAsync(employee, cancellationToken);
+
+                await _databaseRepository.CommitTransactionAsync(cancellationToken);
+            }
+            catch (Exception)
+            {
+                await _databaseRepository.RollbackTransactionAsync(cancellationToken);
+
+                throw;
+            }
         }
     }
 }

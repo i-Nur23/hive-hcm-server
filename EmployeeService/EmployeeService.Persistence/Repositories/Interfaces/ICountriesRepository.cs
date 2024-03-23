@@ -7,6 +7,9 @@ namespace EmployeeService.Persistence.Repositories.Interfaces
         public Task<List<int>> GetAllIsoCodes(
             CancellationToken cancellationToken = default);
 
+        public Task<List<Country>> GetAllAsync(
+            CancellationToken cancellationToken = default);
+
         public Task AddAsync(
             List<Country> countries,
             CancellationToken cancellationToken = default);

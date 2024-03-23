@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using Core.Exceptions;
 using Microsoft.AspNetCore.Http;
 
@@ -21,9 +22,9 @@ namespace Core.Middlewares
             {
                 await _next(context);
             }
-            catch (BadRequestException exception)
+            catch (CustomResponseException exception)
             {
-                statusCode = HttpStatusCode.BadRequest; 
+                statusCode = exception.StatusCode; 
 
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)statusCode;

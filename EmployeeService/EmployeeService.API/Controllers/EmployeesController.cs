@@ -6,9 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EmployeeService.API.Controllers
 {
     [Authorize]
-    [Route("api/employees")]
-    [ApiController]
-    public class EmployeesController : ControllerBase
+    public class EmployeesController : BaseController
     {
         private readonly IEmployeesService _employeesService;
 
@@ -18,10 +16,10 @@ namespace EmployeeService.API.Controllers
             _employeesService = employeesService;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetEmployee(Guid id)
+        [HttpGet("info")]
+        public async Task<IActionResult> GetEmployee()
         {
-            Employee employee =  await _employeesService.GetEmployeeByIdAsync(id);
+            Employee employee =  await _employeesService.GetEmployeeByIdAsync(UserId);
 
             return Ok(employee);
         }

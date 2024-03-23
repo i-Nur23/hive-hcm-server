@@ -20,6 +20,7 @@ namespace UserService.Web.Extensions
             services.AddHostedService<DatabaseMigrateService>();
 
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IUsersService, UsersService>();
 
             return services;
         }
