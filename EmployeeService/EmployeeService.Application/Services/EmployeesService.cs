@@ -102,7 +102,7 @@ namespace EmployeeService.Application.Services
 
                 employee.BirthDate = userUpdated.BirthDate;
                 employee.Email = userUpdated.Email;
-                employee.Name = userUpdated.Surname;
+                employee.Name = userUpdated.Name;
                 employee.Patronimic = userUpdated.Patronymic;
                 employee.PhoneNumber = userUpdated.PhoneNumber;
                 employee.City = userUpdated.City;

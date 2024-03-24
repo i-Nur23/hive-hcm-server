@@ -14,10 +14,10 @@
 
         public string PhoneNumber { get; set; }
 
-        public int CountryCode { get; set; }
+        public int? CountryCode { get; set; }
 
         public string City { get; set; }
 
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
     }
 }
