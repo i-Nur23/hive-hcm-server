@@ -27,7 +27,11 @@ services.AddCors(options =>
     });
 });
 
-services.AddControllers();
+services
+    .AddControllers()
+    .AddNewtonsoftJson(options =>
+                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+); ;
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen(options =>
 {
