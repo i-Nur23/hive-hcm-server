@@ -12,6 +12,10 @@ namespace EmployeeService.Application.Interfaces
             Guid unitId,
             CancellationToken cancellationToken = default);
 
-
+        public Task AddUnitAsync(
+            Guid? parentUnit,
+            Guid leadId,
+            string name,
+            CancellationToken cancellationToken = default);
     }
 }

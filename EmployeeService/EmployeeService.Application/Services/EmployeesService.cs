@@ -4,6 +4,7 @@ using Core.Exceptions;
 using EmployeeService.Application.Interfaces;
 using EmployeeService.Models.Entities;
 using EmployeeService.Persistence.Repositories.Interfaces;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal;
 
 namespace EmployeeService.Application.Services
 {
@@ -39,15 +40,6 @@ namespace EmployeeService.Application.Services
                     Id = newCeo.Id,
                     Name = newCeo.Name,
                     Surname = newCeo.Surname,
-                    Units = new List<Unit>
-                    {
-                        new Unit
-                        {
-                            Name = "Корневое подразделение",
-                            LeadId = newCeo.Id,
-                            Company = company,
-                        }
-                    },
                     RoleType = Role.CEO
                 };
 
@@ -71,7 +63,7 @@ namespace EmployeeService.Application.Services
 
                 var employee = await _employeesRepository.GetAsync(
                     employee => employee.Id.Equals(id), 
-                    cancellationToken);
+                    cancellationToken: cancellationToken);
 
                 await _databaseRepository.CommitTransactionAsync(cancellationToken);
 
@@ -119,6 +111,16 @@ namespace EmployeeService.Application.Services
 
                 throw;
             }
+        }
+
+        public async Task<List<Employee>> GetSubEmployeesAsync(
+            Guid id, 
+            CancellationToken cancellationToken)
+        {
+            return (await _employeesRepository
+                .GetAllAsync(e => e.Units.Any(u => u.LeadId.Equals(id))))
+                .Distinct()
+                .ToList();
         }
     }
 }

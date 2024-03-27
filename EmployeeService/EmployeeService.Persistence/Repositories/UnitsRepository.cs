@@ -35,5 +35,14 @@ namespace EmployeeService.Persistence.Repositories
                 .Include(u => u.ChildUnits)
                 .ToListAsync(cancellationToken);
         }
+
+        public async Task AddUnitAsync(
+            Unit unit, 
+            CancellationToken cancellationToken = default)
+        {
+            await _employeeServiceDbContext.Units.AddAsync(unit, cancellationToken);
+
+            await _employeeServiceDbContext.SaveChangesAsync(cancellationToken);
+        }
     }
 }

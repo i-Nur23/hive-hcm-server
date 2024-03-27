@@ -12,5 +12,9 @@ namespace EmployeeService.Persistence.Repositories.Interfaces
         public Task<Unit> GetUnitAsync(
             Expression<Func<Unit, bool>> condition,
             CancellationToken cancellationToken = default);
+
+        public Task AddUnitAsync(
+            Unit unit,
+            CancellationToken cancellationToken = default);
     }
 }

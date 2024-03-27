@@ -27,5 +27,16 @@ namespace EmployeeService.Models.Entities
         public List<EmployeeUnit> EmployeeUnits { get; set; }
 
         public ICollection<Unit> ChildUnits { get; set; }
+
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                if (ParentUnit is null) return Name;
+
+                return $"{ParentUnit.FullName} > {Name}";
+            }
+        }
     }
 }

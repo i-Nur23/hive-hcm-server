@@ -24,6 +24,8 @@ namespace EmployeeService.Persistence.Repositories
 
         public async Task<Employee?> GetAsync(
             Expression<Func<Employee, bool>> condition,
+            bool isCountryIncluded = true,
+            bool isUnitsIncluded = true,
             CancellationToken cancellationToken = default)
         {
             if (condition is null)
@@ -31,8 +33,19 @@ namespace EmployeeService.Persistence.Repositories
                 return null;
             }
 
-            return await _dbContext.Employees
-                .Include(e => e.Country)
+            IQueryable<Employee> employeesQuery = _dbContext.Employees;
+
+            if (isCountryIncluded)
+            {
+                employeesQuery = employeesQuery.Include(e => e.Country);
+            }
+
+            if (isUnitsIncluded)
+            {
+                employeesQuery = employeesQuery.Include(e => e.Units);
+            }
+
+            return await employeesQuery
                 .FirstOrDefaultAsync(
                     condition, cancellationToken)
                 .ConfigureAwait(false);
@@ -45,6 +58,34 @@ namespace EmployeeService.Persistence.Repositories
             _dbContext.Employees.Update(employee);
 
             await _dbContext.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task<List<Employee?>> GetAllAsync(
+            Expression<Func<Employee, bool>> condition,
+            bool isCountryIncluded = true,
+            bool isUnitsIncluded = true,
+            CancellationToken cancellationToken = default)
+        {
+            if (condition is null)
+            {
+                return null;
+            }
+
+            IQueryable<Employee> employeesQuery = _dbContext.Employees;
+
+            if (isCountryIncluded)
+            {
+                employeesQuery = employeesQuery.Include(e => e.Country);
+            }
+
+            if (isUnitsIncluded)
+            {
+                employeesQuery = employeesQuery.Include(e => e.Units);
+            }
+
+            return await employeesQuery
+                .Where(condition)
+                .ToListAsync(cancellationToken);
         }
     }
 }

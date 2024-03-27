@@ -17,5 +17,9 @@ namespace EmployeeService.Application.Interfaces
         public Task AddCeoAsync(
             CompanyCreatedEvent newCeo,
             CancellationToken cancellationToken = default);
+
+        public Task<List<Employee>> GetSubEmployeesAsync(
+            Guid id,
+            CancellationToken cancellationToken);
     }
 }

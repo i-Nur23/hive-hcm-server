@@ -7,6 +7,14 @@ namespace EmployeeService.Persistence.Repositories.Interfaces
     {
         public Task<Employee?> GetAsync(
             Expression<Func<Employee, bool>> condition,
+            bool isCountryIncluded = true,
+            bool isUnitsIncluded = true,
+            CancellationToken cancellationToken = default);
+
+        public Task<List<Employee?>> GetAllAsync(
+            Expression<Func<Employee, bool>> condition,
+            bool isCountryIncluded = true,
+            bool isUnitsIncluded = true,
             CancellationToken cancellationToken = default);
 
         public Task AddAsync(
