@@ -1,10 +1,12 @@
 ﻿using Core.Enums;
 using Core.Events;
 using Core.Exceptions;
+using Core.Responses;
 using EmployeeService.Application.Interfaces;
+using EmployeeService.Models.Dtos;
 using EmployeeService.Models.Entities;
 using EmployeeService.Persistence.Repositories.Interfaces;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal;
+using MassTransit;
 
 namespace EmployeeService.Application.Services
 {
@@ -12,13 +14,17 @@ namespace EmployeeService.Application.Services
     {
         private readonly IEmployeesRepository _employeesRepository;
         private readonly IDatabaseRepository _databaseRepository;
+        private readonly IRequestClient<NewUserEvent> _newUserRequestClient;
+        private readonly IUnitsRepository _unitsRepository;
 
         public EmployeesService(
             IEmployeesRepository employeesRepository, 
-            IDatabaseRepository databaseRepository)
+            IDatabaseRepository databaseRepository,
+            IRequestClient<NewUserEvent> newUserRequestClient)
         {
             _employeesRepository = employeesRepository; 
             _databaseRepository = databaseRepository;
+            _newUserRequestClient = newUserRequestClient;
         }
 
         public async Task AddCeoAsync(
@@ -115,12 +121,85 @@ namespace EmployeeService.Application.Services
 
         public async Task<List<Employee>> GetSubEmployeesAsync(
             Guid id, 
-            CancellationToken cancellationToken)
+            CancellationToken cancellationToken = default)
         {
             return (await _employeesRepository
                 .GetAllAsync(e => e.Units.Any(u => u.LeadId.Equals(id))))
                 .Distinct()
                 .ToList();
+        }
+
+        public async Task AddEmployeeAsync(
+            NewUserDto newUserDto, 
+            CancellationToken cancellationToken = default)
+        {
+            await _databaseRepository.BeginTransactionAsync(cancellationToken);
+
+            try
+            {
+                Unit unit =
+                    await _unitsRepository.GetUnitAsync(u => u.Id.Equals(newUserDto.UnitId), cancellationToken);
+
+                Guid id = Guid.NewGuid();
+
+                Employee employee = new Employee()
+                {
+                    Id = id,
+                    Email = newUserDto.Email,
+                    Name = newUserDto.Name,
+                    Surname = newUserDto.Surname,
+                    RoleType = newUserDto.Role,
+                    Units = new List<Unit>() { unit }
+                };
+
+                await _employeesRepository.AddAsync(employee, cancellationToken);
+
+                var response = await _newUserRequestClient.GetResponse<BaseResponse>(new NewUserEvent()
+                {
+                    Email = newUserDto.Email,
+                    Id = id,
+                    Name = newUserDto.Name,
+                    Role = newUserDto.Role,
+                    Surname = newUserDto.Surname
+                },
+                cancellationToken,
+                RequestTimeout.After(s: 30));
+
+                if (!response.Message.IsSuccess)
+                {
+                    throw new BadRequestException("Ошибка при выполнении запроса");
+                }
+
+                await _databaseRepository.CommitTransactionAsync(cancellationToken);
+            }
+            catch (Exception)
+            {
+                await _databaseRepository.RollbackTransactionAsync(cancellationToken);
+                throw;
+            }
+        }
+
+        public async Task SetEmployeeAsync(
+            SetUserDto setUserDto, 
+            CancellationToken cancellationToken = default)
+        {
+            Employee employee = await _employeesRepository.GetAsync(e => e.Id.Equals(setUserDto.UserId));
+
+            if (employee is null)
+            {
+                throw new BadRequestException("Пользователь не найден");
+            }
+
+            Unit unit = await _unitsRepository.GetUnitAsync(u => u.Id.Equals(setUserDto.UnitId));
+
+            if (unit is null)
+            {
+                throw new BadRequestException("Подразделение не найдено");
+            }
+
+            employee.Units.Add(unit);
+
+            await _employeesRepository.UpdateAsync(employee, cancellationToken);
         }
     }
 }

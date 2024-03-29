@@ -1,4 +1,5 @@
-﻿using UserService.Models.Dtos;
+﻿using Core.Events;
+using UserService.Models.Dtos;
 
 namespace UserService.Services.Interfaces
 {
@@ -16,5 +17,8 @@ namespace UserService.Services.Interfaces
             CancellationToken cancellationToken = default);
 
 
+        public Task<bool> TryCreateUserAsync(
+            NewUserEvent newUserEvent,
+            CancellationToken cancellationToken = default);
     }
 }

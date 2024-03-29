@@ -1,4 +1,5 @@
 ﻿using EmployeeService.Application.Interfaces;
+using EmployeeService.Models.Dtos;
 using EmployeeService.Models.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EmployeeService.API.Controllers
 {
     [Authorize]
+    [Route("api/employees")]
     public class EmployeesController : BaseController
     {
         private readonly IEmployeesService _employeesService;
@@ -41,6 +43,32 @@ namespace EmployeeService.API.Controllers
             Unit unit = await _unitsService.GetUnitAsync(unitId);
 
             return Ok(unit);
+        }
+
+        [HttpPost("new")]
+        public async Task<IActionResult> AddNewEmployeeAsync(
+            [FromBody] NewUserDto newUserDto)
+        {
+            await _employeesService.AddEmployeeAsync(newUserDto);
+
+            return Ok();
+        }
+
+        [HttpPost("set")]
+        public async Task<IActionResult> SetEmployeeToUnitAsync(
+            [FromBody] SetUserDto setUserDto)
+        {
+            await _employeesService.SetEmployeeAsync(setUserDto);
+
+            return Ok();
+        }
+
+        [HttpGet("subs")]
+        public async Task<IActionResult> GetSubEmployees()
+        {
+            List<Employee> employees = await _employeesService.GetSubEmployeesAsync(UserId);
+            
+            return Ok(employees);
         }
     }
 }

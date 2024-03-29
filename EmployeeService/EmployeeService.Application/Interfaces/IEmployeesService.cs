@@ -1,4 +1,5 @@
 ﻿using Core.Events;
+using EmployeeService.Models.Dtos;
 using EmployeeService.Models.Entities;
 
 namespace EmployeeService.Application.Interfaces
@@ -18,8 +19,16 @@ namespace EmployeeService.Application.Interfaces
             CompanyCreatedEvent newCeo,
             CancellationToken cancellationToken = default);
 
+        public Task AddEmployeeAsync(
+            NewUserDto newUserDto,
+            CancellationToken cancellationToken = default);
+
+        public Task SetEmployeeAsync(
+            SetUserDto setUserDto,
+            CancellationToken cancellationToken = default);
+
         public Task<List<Employee>> GetSubEmployeesAsync(
             Guid id,
-            CancellationToken cancellationToken);
+            CancellationToken cancellationToken = default);
     }
 }

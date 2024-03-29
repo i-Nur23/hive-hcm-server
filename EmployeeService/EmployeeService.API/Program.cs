@@ -67,6 +67,8 @@ services.AddMassTransit(x =>
     x.AddConsumer<CountriesScrapedConsumer>();
     x.AddConsumer<UserUpdatedConsumer>();
 
+    x.AddRequestClient<NewUserEvent>();
+
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host("localhost", "/", h =>

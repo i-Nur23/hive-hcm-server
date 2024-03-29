@@ -7,7 +7,6 @@ using System.Security.Claims;
 namespace EmployeeService.API.Controllers
 {
     [ApiController]
-    [Route("api/employees")]
     public class BaseController : ControllerBase
     {
         protected Guid UserId

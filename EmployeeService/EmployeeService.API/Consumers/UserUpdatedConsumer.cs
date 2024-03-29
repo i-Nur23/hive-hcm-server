@@ -1,9 +1,8 @@
 ﻿using Core.Events;
 using Core.Exceptions;
+using Core.Responses;
 using EmployeeService.Application.Interfaces;
-using EmployeeService.Persistence.Repositories.Interfaces;
 using MassTransit;
-using System;
 using System.Net;
 
 namespace EmployeeService.API.Consumers

@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Core.Events
+namespace Core.Responses
 {
     public class RequestResult
     {

@@ -1,9 +1,6 @@
-﻿using Core.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Core.Events;
+using Core.Exceptions;
+using MassTransit;
 using UserService.Models.Dtos;
 using UserService.Models.Entities;
 using UserService.Persistance.Repositories.Interfaces;
@@ -16,13 +13,19 @@ namespace UserService.Services
     {
         private readonly IUsersRepository _usersRepository;
         private readonly IHashService _hashService;
+        private readonly IDatabaseRepository _databaseRepository;
+        private readonly IPublishEndpoint _publishEndpoint;
 
         public UsersService(
             IUsersRepository usersRepository,
-            IHashService hashService)
+            IHashService hashService,
+            IDatabaseRepository databaseRepository,
+            IPublishEndpoint publishEndpoint)
         {
             _usersRepository = usersRepository;
             _hashService = hashService;
+            _databaseRepository = databaseRepository;
+            _publishEndpoint = publishEndpoint;
         }
 
         public UsersService(
@@ -83,6 +86,61 @@ namespace UserService.Services
             user.Surname = updateUserDto.Surname;
 
             await _usersRepository.UpdateAsync(user, cancellationToken);
+        }
+
+        public async Task<bool> TryCreateUserAsync(
+            NewUserEvent newUser, 
+            CancellationToken cancellationToken = default)
+        {
+            await _databaseRepository.StartTransactionAsync(cancellationToken);
+
+            try
+            {
+                string password = GeneratePassword(12);
+
+                string hashedPassword = await _hashService.CreateHashAsync(password, cancellationToken);
+
+                await _publishEndpoint.Publish<EmailSendEvent>(new()
+                {
+                    Email = newUser.Email,
+                    Subject = "Пароль для входа",
+                    Body = $"Пароль: {hashedPassword}" 
+                });
+
+                User user = new User()
+                {
+                    Email = newUser.Email,
+                    Id = newUser.Id,
+                    Name = newUser.Name,
+                    Password = hashedPassword,
+                    RoleType = newUser.Role
+                };
+
+                await _usersRepository.AddAsync(user, cancellationToken);
+
+                await _databaseRepository.CommitTransactionAsync(cancellationToken); 
+
+                return true;
+            }
+            catch (Exception)
+            {
+                await _databaseRepository.RollbackTransactionAsync(cancellationToken);
+                return false;
+            }
+        }
+
+        private string GeneratePassword(int length)
+        {
+            string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
+            char[] password = new char[length];
+            Random random = new Random();
+
+            for (int i = 0; i < length; i++)
+            {
+                password[i] = chars[random.Next(chars.Length)];
+            }
+
+            return new string(password);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Core.Events;
 using Core.Exceptions;
+using Core.Responses;
 using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

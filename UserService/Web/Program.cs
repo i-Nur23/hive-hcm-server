@@ -6,6 +6,7 @@ using Core.Middlewares;
 using MassTransit;
 using Microsoft.IdentityModel.Tokens;
 using Core.Events;
+using UserService.Web.Consumers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,6 +62,7 @@ services.AddServices();
 services.AddMassTransit(x =>
 {
     x.AddRequestClient<UserUpdatedEvent>();
+    x.AddConsumer<NewUserConsumer>();
 
     x.UsingRabbitMq((context, cfg) =>
     {
@@ -91,17 +93,5 @@ app.UseCustomMiddlewares();
 app.UseCors("AllowAll");
 
 app.MapControllers();
-
-app.Use(async (context, next) =>
-{
-    try
-    {
-        await next();
-    }
-    catch (SecurityTokenInvalidSignatureException ex)
-    {
-        Console.WriteLine(ex.Message);
-    }
-});
 
 app.Run();

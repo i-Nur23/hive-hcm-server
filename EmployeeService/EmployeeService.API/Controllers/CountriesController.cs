@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeService.API.Controllers
 {
+    [Route("api/employees")]
     public class CountriesController : BaseController
     {
         private readonly ICountriesService _countriesService;
