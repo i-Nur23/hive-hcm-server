@@ -38,6 +38,8 @@ namespace EmployeeService.Application.Services
             string name, 
             CancellationToken cancellationToken = default)
         {
+            Guid companyId = Guid.Empty;
+
             if (parentUnitId is not null)
             {
                 Unit parentUnit = await _unitsRepository.GetUnitAsync(
@@ -57,6 +59,12 @@ namespace EmployeeService.Application.Services
                 {
                     throw new BadRequestException("Подразделение уже существует");
                 }
+
+                companyId = parentUnit.CompanyId;
+            }
+            else
+            {
+
             }
 
             Unit unit = new Unit()
@@ -65,6 +73,7 @@ namespace EmployeeService.Application.Services
                 Name = name,
                 ParentUnitId = parentUnitId,
                 LeadId = leadId,
+                CompanyId = companyId
             };
 
             await _unitsRepository.AddUnitAsync(unit, cancellationToken);

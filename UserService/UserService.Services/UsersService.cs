@@ -104,13 +104,14 @@ namespace UserService.Services
                 {
                     Email = newUser.Email,
                     Subject = "Пароль для входа",
-                    Body = $"Пароль: {hashedPassword}" 
+                    Body = $"Пароль: {password}" 
                 });
 
                 User user = new User()
                 {
                     Email = newUser.Email,
                     Id = newUser.Id,
+                    Surname = newUser.Surname,
                     Name = newUser.Name,
                     Password = hashedPassword,
                     RoleType = newUser.Role

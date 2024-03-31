@@ -62,6 +62,7 @@ services.AddServices();
 services.AddMassTransit(x =>
 {
     x.AddRequestClient<UserUpdatedEvent>();
+    
     x.AddConsumer<NewUserConsumer>();
 
     x.UsingRabbitMq((context, cfg) =>

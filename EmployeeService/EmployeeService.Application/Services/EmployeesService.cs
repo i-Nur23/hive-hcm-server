@@ -20,11 +20,13 @@ namespace EmployeeService.Application.Services
         public EmployeesService(
             IEmployeesRepository employeesRepository, 
             IDatabaseRepository databaseRepository,
-            IRequestClient<NewUserEvent> newUserRequestClient)
+            IRequestClient<NewUserEvent> newUserRequestClient,
+            IUnitsRepository unitsRepository)
         {
             _employeesRepository = employeesRepository; 
             _databaseRepository = databaseRepository;
             _newUserRequestClient = newUserRequestClient;
+            _unitsRepository = unitsRepository;
         }
 
         public async Task AddCeoAsync(
@@ -137,9 +139,6 @@ namespace EmployeeService.Application.Services
 
             try
             {
-                Unit unit =
-                    await _unitsRepository.GetUnitAsync(u => u.Id.Equals(newUserDto.UnitId), cancellationToken);
-
                 Guid id = Guid.NewGuid();
 
                 Employee employee = new Employee()
@@ -149,7 +148,11 @@ namespace EmployeeService.Application.Services
                     Name = newUserDto.Name,
                     Surname = newUserDto.Surname,
                     RoleType = newUserDto.Role,
-                    Units = new List<Unit>() { unit }
+                    EmployeeUnits = new List<EmployeeUnit>(){ new EmployeeUnit()
+                    {
+                        EmployeeId = id,
+                        UnitId = newUserDto.UnitId,
+                    }}
                 };
 
                 await _employeesRepository.AddAsync(employee, cancellationToken);
