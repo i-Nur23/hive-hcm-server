@@ -1,10 +1,11 @@
-﻿using EmployeeService.Models.Entities;
+﻿using EmployeeService.Models.Dtos;
+using EmployeeService.Models.Entities;
 
 namespace EmployeeService.Application.Interfaces
 {
     public interface IUnitsService
     {
-        public Task<IEnumerable<Unit>> GetLeadingUnitsAsync(
+        public Task<IEnumerable<UnitInfoDto>> GetLeadingUnitsAsync(
             Guid employeeId,
             CancellationToken cancellationToken = default);
 
@@ -16,6 +17,10 @@ namespace EmployeeService.Application.Interfaces
             Guid? parentUnit,
             Guid leadId,
             string name,
+            CancellationToken cancellationToken = default);
+
+        public Task DeleteUnitAsync(
+            Guid unitId,
             CancellationToken cancellationToken = default);
     }
 }

@@ -32,7 +32,7 @@ namespace EmployeeService.API.Controllers
         [HttpGet("units")]
         public async Task<IActionResult> GetUnitsAsync() 
         {
-            IEnumerable<Unit> units = await _unitsService.GetLeadingUnitsAsync(UserId);
+            IEnumerable<UnitInfoDto> units = await _unitsService.GetLeadingUnitsAsync(UserId);
 
             return Ok(units);
         }
@@ -69,6 +69,24 @@ namespace EmployeeService.API.Controllers
             List<Employee> employees = await _employeesService.GetSubEmployeesAsync(UserId);
             
             return Ok(employees);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllCompanyEmployees(CancellationToken cancellationToken)
+        {
+            List<Employee> employees = await _employeesService.GetAllAsync(UserId, cancellationToken);
+
+            return Ok(employees);
+        }
+
+        [HttpPost("remove")]
+        public async Task<IActionResult> RemoveWorkerFromUnitAsync(
+            [FromBody] RemoveWorkerDto removeWorkerDto,
+            CancellationToken cancellationToken)
+        {
+            await _employeesService.RemoveFromUnitAsync(removeWorkerDto, cancellationToken);
+
+            return Ok();
         }
     }
 }

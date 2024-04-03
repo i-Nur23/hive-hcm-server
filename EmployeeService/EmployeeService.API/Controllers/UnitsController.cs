@@ -29,5 +29,14 @@ namespace EmployeeService.API.Controllers
             return Ok();
         }
 
+        [HttpDelete("{unitId}")]
+        public async Task<IActionResult> DeleteUnitAsync(
+            Guid unitId,
+            CancellationToken cancellationToken)
+        {
+            await _unitsService.DeleteUnitAsync(unitId, cancellationToken);
+
+            return Ok();
+        }
     }
 }

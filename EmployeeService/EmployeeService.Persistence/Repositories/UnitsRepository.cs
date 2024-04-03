@@ -33,6 +33,8 @@ namespace EmployeeService.Persistence.Repositories
                 .Where(condition)
                 .Include(u => u.Workers)
                 .Include(u => u.ChildUnits)
+                .ThenInclude(cu => cu.Lead)
+                .Include(u => u.Lead)
                 .ToListAsync(cancellationToken);
         }
 
@@ -43,6 +45,24 @@ namespace EmployeeService.Persistence.Repositories
             await _employeeServiceDbContext.Units.AddAsync(unit, cancellationToken);
 
             await _employeeServiceDbContext.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task DeleteAsync(
+            Guid unitId, 
+            CancellationToken cancellationToken = default)
+        {
+            await _employeeServiceDbContext.Database
+                .ExecuteSqlAsync($"DELETE FROM \"Units\" WHERE \"Id\" = {unitId}");
+        }
+
+        public async Task UpdateRangeAsync(
+            CancellationToken cancellationToken,
+            params Unit[] units)
+        {
+            _employeeServiceDbContext.Units.UpdateRange(units);
+
+            await _employeeServiceDbContext.SaveChangesAsync(cancellationToken);
+
         }
     }
 }

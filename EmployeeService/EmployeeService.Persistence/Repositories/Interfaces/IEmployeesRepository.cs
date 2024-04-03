@@ -12,7 +12,7 @@ namespace EmployeeService.Persistence.Repositories.Interfaces
             CancellationToken cancellationToken = default);
 
         public Task<List<Employee?>> GetAllAsync(
-            Expression<Func<Employee, bool>> condition,
+            Expression<Func<Employee, bool>> condition = null,
             bool isCountryIncluded = true,
             bool isUnitsIncluded = true,
             CancellationToken cancellationToken = default);
@@ -23,6 +23,11 @@ namespace EmployeeService.Persistence.Repositories.Interfaces
 
         public Task UpdateAsync(
             Employee employee,
+            CancellationToken cancellationToken = default);
+
+        public Task RemoveFromUnitAsync(
+            Guid employeeId,
+            Guid unitId,
             CancellationToken cancellationToken = default);
     }
 }

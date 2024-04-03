@@ -1,5 +1,6 @@
 ﻿using Core.Exceptions;
 using EmployeeService.Application.Interfaces;
+using EmployeeService.Models.Dtos;
 using EmployeeService.Models.Entities;
 using EmployeeService.Persistence.Repositories.Interfaces;
 
@@ -18,11 +19,47 @@ namespace EmployeeService.Application.Services
             _unitsRepository = unitsRepository;
         }
 
-        public async Task<IEnumerable<Unit>> GetLeadingUnitsAsync(
+        public async Task<IEnumerable<UnitInfoDto>> GetLeadingUnitsAsync(
             Guid employeeId, 
             CancellationToken cancellationToken = default)
         {
-            return await _unitsRepository.GetUnitsAsync(unit => unit.LeadId.Equals(employeeId));
+            IEnumerable<Unit> units = 
+                await _unitsRepository.GetUnitsAsync(unit => unit.LeadId.Equals(employeeId));
+
+            return units.Select(u => new UnitInfoDto()
+            {
+                Name = u.Name,
+                Id = u.Id,
+                Lead = new WorkerBaseDto()
+                {
+                    Id = u.Lead.Id,
+                    Name = u.Lead.Name,
+                    Surname = u.Lead.Surname,
+                    Patronymic = u.Lead.Patronimic,
+                    Email = u.Lead.Email
+                },
+                Workers = u.Workers.Select(w => new WorkerBaseDto()
+                {
+                    Id = w.Id,
+                    Name = w.Name,
+                    Surname = w.Surname,
+                    Patronymic = w.Patronimic,
+                    Email = w.Email
+                }).ToList(),
+                ChildUnits = u.ChildUnits.Select(cu => new UnitInfoDto() 
+                { 
+                    Id = cu.Id,
+                    Name = cu.Name,
+                    Lead = new WorkerBaseDto()
+                    {
+                        Id = cu.Lead.Id,
+                        Name = cu.Lead.Name,
+                        Surname = cu.Lead.Surname,
+                        Patronymic = cu.Lead.Patronimic,
+                        Email = cu.Lead.Email
+                    },
+                }).ToList(),
+            });
         }
 
         public async Task<Unit> GetUnitAsync(
@@ -78,6 +115,13 @@ namespace EmployeeService.Application.Services
 
             await _unitsRepository.AddUnitAsync(unit, cancellationToken);
 
+        }
+
+        public async Task DeleteUnitAsync(
+            Guid unitId, 
+            CancellationToken cancellationToken = default)
+        {
+            await _unitsRepository.DeleteAsync(unitId, cancellationToken);
         }
     }
 }

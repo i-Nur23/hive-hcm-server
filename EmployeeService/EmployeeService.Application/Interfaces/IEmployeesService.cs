@@ -30,5 +30,13 @@ namespace EmployeeService.Application.Interfaces
         public Task<List<Employee>> GetSubEmployeesAsync(
             Guid id,
             CancellationToken cancellationToken = default);
+
+        public Task<List<Employee>> GetAllAsync(
+            Guid userId,
+            CancellationToken cancellationToken = default);
+
+        public Task RemoveFromUnitAsync(
+            RemoveWorkerDto removeWorkerDto,
+            CancellationToken cancellationToken = default);
     }
 }

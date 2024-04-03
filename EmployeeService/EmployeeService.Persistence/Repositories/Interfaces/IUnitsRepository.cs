@@ -16,5 +16,13 @@ namespace EmployeeService.Persistence.Repositories.Interfaces
         public Task AddUnitAsync(
             Unit unit,
             CancellationToken cancellationToken = default);
+
+        public Task DeleteAsync(
+            Guid unitId,
+            CancellationToken cancellationToken = default);
+
+        public Task UpdateRangeAsync(
+            CancellationToken cancellationToken,
+            params Unit[] units);
     }
 }

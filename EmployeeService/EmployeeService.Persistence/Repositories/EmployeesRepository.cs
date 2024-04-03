@@ -42,7 +42,8 @@ namespace EmployeeService.Persistence.Repositories
 
             if (isUnitsIncluded)
             {
-                employeesQuery = employeesQuery.Include(e => e.Units);
+                employeesQuery = employeesQuery
+                    .Include(e => e.EmployeeUnits);
             }
 
             return await employeesQuery
@@ -61,7 +62,7 @@ namespace EmployeeService.Persistence.Repositories
         }
 
         public async Task<List<Employee?>> GetAllAsync(
-            Expression<Func<Employee, bool>> condition,
+            Expression<Func<Employee, bool>> condition = null,
             bool isCountryIncluded = true,
             bool isUnitsIncluded = true,
             CancellationToken cancellationToken = default)
@@ -83,9 +84,22 @@ namespace EmployeeService.Persistence.Repositories
                 employeesQuery = employeesQuery.Include(e => e.Units);
             }
 
+            if (condition is not null)
+            {
+                employeesQuery = employeesQuery.Where(condition);
+            }
+
             return await employeesQuery
-                .Where(condition)
                 .ToListAsync(cancellationToken);
+        }
+
+        public async Task RemoveFromUnitAsync(
+            Guid employeeId, 
+            Guid unitId, 
+            CancellationToken cancellationToken = default)
+        {
+            await _dbContext.Database
+                .ExecuteSqlAsync($"DELETE FROM \"EmployeeUnits\" WHERE \"UnitId\" = {unitId} AND \"EmployeeId\" = {employeeId}");
         }
     }
 }

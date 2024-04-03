@@ -25,8 +25,13 @@ namespace EmployeeService.Models.Entities
 
         public int? CountryCode { get; set; }
 
+        public Guid CompanyId { get; set; }
+
         [ForeignKey("CountryCode")]
         public Country? Country { get; set; }
+
+        [ForeignKey("CompanyId")]
+        public Company Company { get; set; }
 
         public ICollection<Unit> Units { get; set; }
 

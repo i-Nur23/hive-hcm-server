@@ -48,7 +48,8 @@ namespace EmployeeService.Application.Services
                     Id = newCeo.Id,
                     Name = newCeo.Name,
                     Surname = newCeo.Surname,
-                    RoleType = Role.CEO
+                    RoleType = Role.CEO,
+                    Company = company
                 };
 
                 await _employeesRepository.AddAsync(ceo, cancellationToken);
@@ -139,6 +140,8 @@ namespace EmployeeService.Application.Services
 
             try
             {
+                Unit unit = await _unitsRepository.GetUnitAsync(unit => unit.Id.Equals(newUserDto.UnitId));
+
                 Guid id = Guid.NewGuid();
 
                 Employee employee = new Employee()
@@ -152,7 +155,8 @@ namespace EmployeeService.Application.Services
                     {
                         EmployeeId = id,
                         UnitId = newUserDto.UnitId,
-                    }}
+                    }},
+                    CompanyId = unit.CompanyId,
                 };
 
                 await _employeesRepository.AddAsync(employee, cancellationToken);
@@ -186,7 +190,9 @@ namespace EmployeeService.Application.Services
             SetUserDto setUserDto, 
             CancellationToken cancellationToken = default)
         {
-            Employee employee = await _employeesRepository.GetAsync(e => e.Id.Equals(setUserDto.UserId));
+            Employee employee = await _employeesRepository.GetAsync(
+                e => e.Id.Equals(setUserDto.UserId),
+                cancellationToken: cancellationToken);
 
             if (employee is null)
             {
@@ -203,6 +209,40 @@ namespace EmployeeService.Application.Services
             employee.Units.Add(unit);
 
             await _employeesRepository.UpdateAsync(employee, cancellationToken);
+        }
+
+        public async Task<List<Employee>> GetAllAsync(
+            Guid userId, 
+            CancellationToken cancellationToken = default)
+        {
+            Employee employee = await _employeesRepository.GetAsync(
+                e => e.Id.Equals(userId), 
+                false,
+                false,
+                cancellationToken);
+
+            if (employee is null)
+            {
+                throw new BadRequestException("Работник не найден");
+            } 
+
+            List<Employee> employees = await _employeesRepository.GetAllAsync(
+                e => e.CompanyId.Equals(employee.CompanyId),
+                isCountryIncluded: false,
+                isUnitsIncluded: false,
+                cancellationToken: cancellationToken);
+
+            return employees;
+        }
+
+        public async Task RemoveFromUnitAsync(
+            RemoveWorkerDto removeWorkerDto, 
+            CancellationToken cancellationToken = default)
+        {
+            await _employeesRepository.RemoveFromUnitAsync(
+                removeWorkerDto.WorkerId,
+                removeWorkerDto.UnitId,
+                cancellationToken);
         }
     }
 }
