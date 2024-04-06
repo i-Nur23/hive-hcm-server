@@ -33,6 +33,7 @@ namespace EmployeeService.Persistence
             services.AddScoped<IEmployeesRepository, EmployeesRepository>();
             services.AddScoped<ICountriesRepository, CountriesRepository>();
             services.AddScoped<IUnitsRepository, UnitsRepository>();
+            services.AddScoped<IEmployeeUnitsRepository, EmployeeUnitsRepository>();
 
             return services;
         }

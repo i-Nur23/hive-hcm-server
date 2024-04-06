@@ -22,6 +22,7 @@ namespace EmployeeService.API.Controllers
             [FromBody] NewUnitDto newUnitDto)
         {
             await _unitsService.AddUnitAsync(
+                UserId,
                 newUnitDto.ParentId, 
                 newUnitDto.LeadId, 
                 newUnitDto.Name);

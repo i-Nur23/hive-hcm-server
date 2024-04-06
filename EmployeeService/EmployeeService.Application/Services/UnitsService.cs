@@ -10,13 +10,16 @@ namespace EmployeeService.Application.Services
     {
         private readonly IUnitsRepository _unitsRepository;
         private readonly IDatabaseRepository _databaseRepository;
+        private readonly IEmployeesRepository _employeesRepository;  
 
         public UnitsService(
             IDatabaseRepository databaseRepository,
-            IUnitsRepository unitsRepository)
+            IUnitsRepository unitsRepository,
+            IEmployeesRepository employeesRepository)
         {
             _databaseRepository = databaseRepository;
             _unitsRepository = unitsRepository;
+            _employeesRepository = employeesRepository;
         }
 
         public async Task<IEnumerable<UnitInfoDto>> GetLeadingUnitsAsync(
@@ -70,6 +73,7 @@ namespace EmployeeService.Application.Services
         }
 
         public async Task AddUnitAsync(
+            Guid userId,
             Guid? parentUnitId, 
             Guid leadId, 
             string name, 
@@ -101,7 +105,18 @@ namespace EmployeeService.Application.Services
             }
             else
             {
+                Employee ceo = await _employeesRepository.GetAsync(
+                    e => e.Id.Equals(userId),
+                    false,
+                    false,
+                    cancellationToken);
 
+                if (ceo is null)
+                {
+                    throw new BadRequestException("Пользователь не найден");
+                }
+
+                companyId = ceo.CompanyId;
             }
 
             Unit unit = new Unit()

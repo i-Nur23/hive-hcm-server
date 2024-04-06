@@ -46,6 +46,10 @@ namespace EmployeeService.Persistence
             modelBuilder.Entity<Unit>()
                 .HasOne(u => u.Lead)
                 .WithMany(e => e.LeadingUnits);
+
+            modelBuilder.Entity<Employee>(entity => {
+                entity.HasIndex(e => e.Email).IsUnique();
+            });
         }
     }
 }

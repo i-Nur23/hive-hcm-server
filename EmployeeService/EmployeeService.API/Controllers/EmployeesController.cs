@@ -71,10 +71,23 @@ namespace EmployeeService.API.Controllers
             return Ok(employees);
         }
 
-        [HttpGet]
+        [HttpGet("all")]
         public async Task<IActionResult> GetAllCompanyEmployees(CancellationToken cancellationToken)
         {
             List<Employee> employees = await _employeesService.GetAllAsync(UserId, cancellationToken);
+
+            return Ok(employees);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllCompanyEmployeesWithoutUnit(
+            [FromQuery] Guid unitId,
+            CancellationToken cancellationToken)
+        {
+            List<Employee> employees = await _employeesService.GetAllNotIncludedInUnitAsync(
+                UserId, 
+                unitId , 
+                cancellationToken);
 
             return Ok(employees);
         }

@@ -14,6 +14,7 @@ namespace EmployeeService.Application.Interfaces
             CancellationToken cancellationToken = default);
 
         public Task AddUnitAsync(
+            Guid userId,
             Guid? parentUnit,
             Guid leadId,
             string name,

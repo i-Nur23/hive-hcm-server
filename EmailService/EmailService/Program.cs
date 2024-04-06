@@ -5,6 +5,7 @@ using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System.Net;
 using System.Net.Mail;
 
@@ -15,6 +16,8 @@ class Program
     public static async Task Main(string[] args)
     {
         HostApplicationBuilder builder = new HostApplicationBuilder();
+
+        builder.Logging.AddConsole();
 
         builder.Services.AddMassTransit(x =>
         {

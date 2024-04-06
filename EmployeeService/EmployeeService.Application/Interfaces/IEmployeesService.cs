@@ -35,6 +35,11 @@ namespace EmployeeService.Application.Interfaces
             Guid userId,
             CancellationToken cancellationToken = default);
 
+        public Task<List<Employee>> GetAllNotIncludedInUnitAsync(
+            Guid userId,
+            Guid unitId,
+            CancellationToken cancellationToken = default);
+
         public Task RemoveFromUnitAsync(
             RemoveWorkerDto removeWorkerDto,
             CancellationToken cancellationToken = default);

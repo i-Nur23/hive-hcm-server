@@ -16,5 +16,12 @@ namespace UserService.Persistance
         {
             await Database.MigrateAsync(cancellationToken);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>(entity => {
+                entity.HasIndex(e => e.Email).IsUnique();
+            });
+        }
     }
 }

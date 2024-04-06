@@ -1,5 +1,6 @@
 ﻿using EmailService.Clients.Interfaces;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System.Net;
 using System.Net.Mail;
 
@@ -9,15 +10,15 @@ namespace EmailService.Clients
     {
         private readonly SmtpClient _smtpClient;
         private readonly MailAddress _from;
-        private readonly IConfiguration _configuration;
+        private readonly ILogger<EmailClient> _logger;
 
         public EmailClient(
             SmtpClient smtpClient, 
             MailAddress from,
-            IConfiguration configuration)
+            ILogger<EmailClient> logger)
         {
             _smtpClient = smtpClient;
-            _configuration = configuration;
+            _logger = logger;
             _from = from;
         }
 
@@ -27,6 +28,10 @@ namespace EmailService.Clients
             string body,
             CancellationToken cancellationToken = default)
         {
+            _logger.LogInformation("New email:\n" +
+                $"Email: {email}\n" +
+                $"Body: {body}\n");
+
             MailAddress to = new MailAddress(email);
             MailMessage message = new MailMessage(_from, to);
 

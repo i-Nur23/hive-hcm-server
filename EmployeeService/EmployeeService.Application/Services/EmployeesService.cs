@@ -16,17 +16,20 @@ namespace EmployeeService.Application.Services
         private readonly IDatabaseRepository _databaseRepository;
         private readonly IRequestClient<NewUserEvent> _newUserRequestClient;
         private readonly IUnitsRepository _unitsRepository;
+        private readonly IEmployeeUnitsRepository _employeeUnitsRepository;
 
         public EmployeesService(
             IEmployeesRepository employeesRepository, 
             IDatabaseRepository databaseRepository,
             IRequestClient<NewUserEvent> newUserRequestClient,
-            IUnitsRepository unitsRepository)
+            IUnitsRepository unitsRepository,
+            IEmployeeUnitsRepository employeeUnitsRepository)
         {
             _employeesRepository = employeesRepository; 
             _databaseRepository = databaseRepository;
             _newUserRequestClient = newUserRequestClient;
             _unitsRepository = unitsRepository;
+            _employeeUnitsRepository = employeeUnitsRepository;
         }
 
         public async Task AddCeoAsync(
@@ -190,25 +193,11 @@ namespace EmployeeService.Application.Services
             SetUserDto setUserDto, 
             CancellationToken cancellationToken = default)
         {
-            Employee employee = await _employeesRepository.GetAsync(
-                e => e.Id.Equals(setUserDto.UserId),
-                cancellationToken: cancellationToken);
-
-            if (employee is null)
+            await _employeeUnitsRepository.AddAsync(new EmployeeUnit
             {
-                throw new BadRequestException("Пользователь не найден");
-            }
-
-            Unit unit = await _unitsRepository.GetUnitAsync(u => u.Id.Equals(setUserDto.UnitId));
-
-            if (unit is null)
-            {
-                throw new BadRequestException("Подразделение не найдено");
-            }
-
-            employee.Units.Add(unit);
-
-            await _employeesRepository.UpdateAsync(employee, cancellationToken);
+                EmployeeId = setUserDto.UserId,
+                UnitId = setUserDto.UnitId
+            }, cancellationToken);
         }
 
         public async Task<List<Employee>> GetAllAsync(
@@ -243,6 +232,34 @@ namespace EmployeeService.Application.Services
                 removeWorkerDto.WorkerId,
                 removeWorkerDto.UnitId,
                 cancellationToken);
+        }
+
+        public async Task<List<Employee>> GetAllNotIncludedInUnitAsync(
+            Guid userId, 
+            Guid unitId, 
+            CancellationToken cancellationToken = default)
+        {
+            Employee employee = await _employeesRepository.GetAsync(
+                e => e.Id.Equals(userId),
+                false,
+                false,
+                cancellationToken);
+
+            if (employee is null)
+            {
+                throw new BadRequestException("Работник не найден");
+            }
+
+            List<Employee> employees = await _employeesRepository.GetAllAsync(
+                e => 
+                    e.CompanyId.Equals(employee.CompanyId) &&
+                    !e.Units.Any(u => u.Id.Equals(unitId)) &&
+                    !e.Id.Equals(userId),
+                isCountryIncluded: false,
+                isUnitsIncluded: true,
+                cancellationToken: cancellationToken);
+
+            return employees;
         }
     }
 }
