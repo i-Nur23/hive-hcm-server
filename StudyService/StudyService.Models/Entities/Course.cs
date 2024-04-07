@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StudyService.Models.Entities
 {
@@ -11,7 +6,7 @@ namespace StudyService.Models.Entities
     {
         public Guid Id { get; set; }
 
-        public Guid InitiatorId { get; set; }
+        public Guid? InitiatorId { get; set; }
 
         public string Name { get; set; }
 
@@ -20,13 +15,10 @@ namespace StudyService.Models.Entities
         public DateTime EndDate { get; set; }
 
         [ForeignKey("InitiatorId")]
-        public Employee Initiator { get; set; }
+        public Employee? Initiator { get; set; }
 
-        public ICollection<Competence> Сompetences { get; set; }
-
-        public List<EmployeeCompetence> EmployeeCompetences { get; set; }
+        public List<EmployeeCourse> EmployeeCourses { get; set; }
 
         public ICollection<Employee> Employees { get; set; }
-
     }
 }

@@ -10,12 +10,10 @@
 
         public string Email { get; set; }
 
-        public ICollection<EmployeeCompetence> EmployeeCompetences { get; set; }
-
         public List<EmployeeCourse> EmployeeCourses { get; set; }
 
         public ICollection<Course> Courses { get; set; }
 
-
+        public ICollection<Course> IntitiatedCourses { get; set; }
     }
 }

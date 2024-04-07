@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StudyService.Persistence.Repositories;
+using StudyService.Persistence.Repositories.Interfaces;
 
 namespace StudyService.Persistence.Extensions
 {
@@ -17,6 +19,8 @@ namespace StudyService.Persistence.Extensions
                 options.UseSqlServer(connectionString);
             });
 
+            services.AddScoped<DatabaseManager>();
+
             services.RegisterRepositories();
 
             return services;
@@ -24,7 +28,8 @@ namespace StudyService.Persistence.Extensions
 
         private static IServiceCollection RegisterRepositories(this IServiceCollection services)
         {
-
+            services.AddScoped<IEmployeesRepository, EmployeesRepository>();
+            services.AddScoped<ICoursesRepository, CoursesRepository>();
 
             return services;
         }
