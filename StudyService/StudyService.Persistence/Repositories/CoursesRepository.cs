@@ -29,14 +29,14 @@ namespace StudyService.Persistence.Repositories
             CancellationToken cancellationToken, 
             params Guid[] employeeIds)
         {
-            _dbContext.EmployeeCourses.AddRangeAsync(employeeIds.Select(id => new EmployeeCourse
+            await _dbContext.EmployeeCourses.AddRangeAsync(employeeIds.Select(id => new EmployeeCourse
             {
                 CourseId = courseId,
                 EmployeeId = id
             }), 
             cancellationToken);
 
-            _dbContext.SaveChangesAsync(cancellationToken);
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
         public async Task<List<Course>> GetAllAsync(
@@ -71,11 +71,6 @@ namespace StudyService.Persistence.Repositories
             bool isIncludeIntitiator = false, 
             CancellationToken cancellationToken = default)
         {
-            if (predicate is null)
-            {
-                return null;
-            }
-
             IQueryable<Course> query = _dbContext.Courses;
 
             if (isIncludeStudents)
@@ -88,9 +83,12 @@ namespace StudyService.Persistence.Repositories
                 query = query.Include(c => c.Initiator);
             }
 
-            return await query
-                .Where(predicate)
-                .ToListAsync(cancellationToken);
+            if (predicate is null)
+            {
+                return await query.FirstAsync(cancellationToken);
+            }
+
+            return await query.FirstOrDefaultAsync(predicate, cancellationToken);
         }
     }
 }

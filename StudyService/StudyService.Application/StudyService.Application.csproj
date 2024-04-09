@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core\Core.csproj" />
     <ProjectReference Include="..\StudyService.Models\StudyService.Models.csproj" />
     <ProjectReference Include="..\StudyService.Persistence\StudyService.Persistence.csproj" />
   </ItemGroup>
