@@ -1,13 +1,14 @@
-﻿using StudyService.Models.Entities;
+﻿using StudyService.Models.Dtos;
+using StudyService.Models.Entities;
 
 namespace StudyService.Application.Interfaces
 {
     public interface ICoursesService
     {
-        Task<List<Course>> GetStudyingAsync(
+        Task<List<StudyingCourseDto>> GetStudyingAsync(
             Guid id);
 
-        Task<List<Course>> GetAdminAsync(
+        Task<List<AdminCourseDto>> GetAdminAsync(
             Guid id);
 
         Task AddAsync(

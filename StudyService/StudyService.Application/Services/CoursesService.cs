@@ -1,5 +1,6 @@
 ﻿using Core.Exceptions;
 using StudyService.Application.Interfaces;
+using StudyService.Models.Dtos;
 using StudyService.Models.Entities;
 using StudyService.Persistence;
 using StudyService.Persistence.Repositories.Interfaces;
@@ -60,7 +61,7 @@ namespace StudyService.Application.Services
             }
         }
 
-        public async Task<List<Course>> GetAdminAsync(Guid id)
+        public async Task<List<AdminCourseDto>> GetAdminAsync(Guid id)
         {
             Employee employee = await _employeesRepository.GetAsync(
                 e => e.Id.Equals(id),
@@ -71,10 +72,23 @@ namespace StudyService.Application.Services
                 throw new BadRequestException("Пользователь не найден");
             }
 
-            return employee.IntitiatedCourses.ToList();
+            return employee.IntitiatedCourses.Select(course => new AdminCourseDto
+            {
+                Id = course.Id,
+                Name = course.Name,
+                StartDate = course.StartDate,
+                EndDate = course.EndDate,
+                Students = course.Employees.Select(e => new StudentDto 
+                { 
+                    Name = e.Name,
+                    Id = e.Id,
+                    Email = e.Email,
+                    Surname = e.Surname
+                })
+            }).ToList();
         }
 
-        public async Task<List<Course>> GetStudyingAsync(Guid id)
+        public async Task<List<StudyingCourseDto>> GetStudyingAsync(Guid id)
         {
             Employee employee = await _employeesRepository.GetAsync(
                 e => e.Id.Equals(id),
@@ -85,7 +99,18 @@ namespace StudyService.Application.Services
                 throw new BadRequestException("Пользователь не найден");
             }
 
-            return employee.Courses.ToList();
+            if (employee.Courses is null)
+            {
+                return Enumerable.Empty<StudyingCourseDto>().ToList();
+            }
+
+            return employee.Courses.Select(c => new StudyingCourseDto
+            {
+                Name= c.Name,
+                EndDate= c.EndDate,
+                StartDate = c.StartDate,
+                InitiatorFullName = $"{c.Initiator.Name} {c.Initiator.Surname}",
+            }).ToList();
         }
 
         public Task UpdateAsync(Guid courseId, string name, DateTime start, DateTime end, IEnumerable<Guid> studentIds)

@@ -70,7 +70,9 @@ namespace StudyService.Persistence.Repositories
 
             if (isInitiatedCoursesIncluded)
             {
-                employeesQuery = employeesQuery.Include(e => e.IntitiatedCourses);
+                employeesQuery = employeesQuery
+                    .Include(e => e.IntitiatedCourses)
+                    .ThenInclude(c => c.Employees);
             }
 
             return await employeesQuery.FirstOrDefaultAsync(condition, cancellationToken);
