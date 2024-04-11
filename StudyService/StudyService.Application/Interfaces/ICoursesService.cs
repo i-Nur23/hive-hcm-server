@@ -20,9 +20,12 @@ namespace StudyService.Application.Interfaces
 
         Task UpdateAsync(
             Guid courseId,
+            Guid initiatorId,
             string name,
             DateTime start,
             DateTime end, 
             IEnumerable<Guid> studentIds);
+
+        Task DeleteAsync(Guid courseId);
     }
 }

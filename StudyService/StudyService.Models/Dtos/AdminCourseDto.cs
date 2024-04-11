@@ -10,6 +10,6 @@
 
         public DateTime EndDate { get; set; }
 
-        public IEnumerable<StudentDto> Students { get; set; }
+        public IEnumerable<Guid> StudentIds { get; set; }
     }
 }

@@ -25,5 +25,16 @@ namespace StudyService.Persistence.Repositories.Interfaces
             Guid courseId,
             CancellationToken cancellationToken,
             params Guid[] employeeIds);
+
+        public Task UpdateAsync(
+            Course course,
+            CancellationToken cancellationToken = default);
+
+        public Task UpdateStudentsAsync(
+            Guid courseId,
+            CancellationToken cancellationToken,
+            params Guid[] employeeIds);
+
+        public Task DeleteAsync(Guid courseId);
     }
 }

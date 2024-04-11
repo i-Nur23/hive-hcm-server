@@ -78,13 +78,7 @@ namespace StudyService.Application.Services
                 Name = course.Name,
                 StartDate = course.StartDate,
                 EndDate = course.EndDate,
-                Students = course.Employees.Select(e => new StudentDto 
-                { 
-                    Name = e.Name,
-                    Id = e.Id,
-                    Email = e.Email,
-                    Surname = e.Surname
-                })
+                StudentIds = course.Employees.Select(e => e.Id)
             }).ToList();
         }
 
@@ -113,9 +107,43 @@ namespace StudyService.Application.Services
             }).ToList();
         }
 
-        public Task UpdateAsync(Guid courseId, string name, DateTime start, DateTime end, IEnumerable<Guid> studentIds)
+        public async Task UpdateAsync(
+            Guid courseId, 
+            Guid initiatorId,
+            string name, 
+            DateTime start, 
+            DateTime end, 
+            IEnumerable<Guid> studentIds)
         {
-            throw new NotImplementedException();
+
+            await _databaseManager.BeginTransactionAsync();
+
+            try
+            {
+                Course course = new Course
+                {
+                    Id = courseId,
+                    InitiatorId = initiatorId,
+                    Name = name,
+                    StartDate = start,
+                    EndDate = end,
+                };
+
+                await _coursesRepository.UpdateAsync(course);
+
+                await _coursesRepository.UpdateStudentsAsync(courseId, default, studentIds.ToArray());
+
+                await _databaseManager.CommitTransactionAsync();
+            }
+            catch (Exception)
+            {
+                await _databaseManager.RollbackTransactionAsync();
+            }
+        }
+
+        public async Task DeleteAsync(Guid courseId)
+        {
+            await _coursesRepository.DeleteAsync(courseId);
         }
     }
 }

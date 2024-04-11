@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using StudyService.Models.Entities;
 using StudyService.Persistence.Repositories.Interfaces;
 using System.Linq.Expressions;
@@ -89,6 +90,57 @@ namespace StudyService.Persistence.Repositories
             }
 
             return await query.FirstOrDefaultAsync(predicate, cancellationToken);
+        }
+
+        public async Task UpdateAsync(
+            Course course, 
+            CancellationToken cancellationToken = default)
+        {
+            _dbContext.Courses.Update(course);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task UpdateStudentsAsync(
+            Guid courseId, 
+            CancellationToken cancellationToken, 
+            params Guid[] employeeIds)
+        {
+            List<EmployeeCourse> employeeCourses = _dbContext.EmployeeCourses
+                .Where(ec => ec.CourseId.Equals(courseId))
+                .ToList(); 
+
+            List<EmployeeCourse> addingEmployeeCourses = new List<EmployeeCourse>();
+            List<EmployeeCourse> deletingEmployeeCourses = new List<EmployeeCourse>();
+
+            foreach (var employeeCourse in employeeCourses)
+            {
+                if (!employeeIds.Any(id => employeeCourse.EmployeeId.Equals(id)))
+                {
+                    deletingEmployeeCourses.Add(employeeCourse);
+                }
+            }
+
+            foreach (var id in employeeIds)
+            {
+                if (!employeeCourses.Any(ec => ec.EmployeeId.Equals(id)))
+                {
+                    addingEmployeeCourses.Add(new EmployeeCourse
+                    {
+                        CourseId = courseId,
+                        EmployeeId = id
+                    });
+                }
+            }
+
+            await _dbContext.EmployeeCourses.AddRangeAsync(addingEmployeeCourses, cancellationToken);
+            _dbContext.EmployeeCourses.RemoveRange(deletingEmployeeCourses);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task DeleteAsync(Guid courseId)
+        {
+            string sql = "DELETE FROM Courses WHERE Id = {0}";
+            await _dbContext.Database.ExecuteSqlRawAsync(sql, courseId);
         }
     }
 }

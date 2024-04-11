@@ -56,10 +56,20 @@ namespace StudyService.Web.Controllers
         {
             await _coursesService.UpdateAsync(
                 courseDto.CourseId,
+                UserId,
                 courseDto.Name,
                 courseDto.StartDate,
                 courseDto.EndDate,
                 courseDto.StudentIds);
+
+            return Ok();
+        }
+
+        [HttpPost("delete/{courseId}")]
+        public async Task<IActionResult> DeleteCourseAsync(
+            Guid courseId)
+        {
+            await _coursesService.DeleteAsync(courseId);
 
             return Ok();
         }
