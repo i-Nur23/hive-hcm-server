@@ -65,7 +65,9 @@ namespace StudyService.Persistence.Repositories
 
             if (isCoursesIncluded)
             {
-                employeesQuery = employeesQuery.Include(e => e.Courses);
+                employeesQuery = employeesQuery
+                    .Include(e => e.Courses)
+                    .ThenInclude(c => c.Initiator);
             }
 
             if (isInitiatedCoursesIncluded)

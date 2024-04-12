@@ -86,7 +86,7 @@ namespace StudyService.Application.Services
         {
             Employee employee = await _employeesRepository.GetAsync(
                 e => e.Id.Equals(id),
-                isInitiatedCourseIncluded: true);
+                isCoursesIncluded: true);
 
             if (employee is null)
             {

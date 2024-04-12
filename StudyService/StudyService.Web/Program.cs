@@ -6,6 +6,7 @@ using Microsoft.OpenApi.Models;
 using StudyService.Application.Extensions;
 using StudyService.Persistence.Extensions;
 using StudyService.Web.Background;
+using StudyService.Web.Consumer;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -59,7 +60,9 @@ services.AddSwaggerGen(options =>
 
 services.AddMassTransit(x =>
 {
-
+    x.AddConsumer<CompanyCreatedConsumer>();
+    x.AddConsumer<NewUserConsumer>();
+    x.AddConsumer<UserUpdatedConsumer>();
 
     x.UsingRabbitMq((context, cfg) =>
     {
