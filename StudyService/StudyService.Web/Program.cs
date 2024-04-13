@@ -8,7 +8,6 @@ using StudyService.Persistence.Extensions;
 using StudyService.Web.Background;
 using StudyService.Web.Consumer;
 using System.Text;
-using static MassTransit.Logging.OperationName;
 
 var builder = WebApplication.CreateBuilder(args);
 
