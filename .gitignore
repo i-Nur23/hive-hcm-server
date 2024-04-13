@@ -2,3 +2,6 @@
 
 obj/
 bin/
+MediaService/media_server.exe
+MediaService/public/worker
+MediaService/public/candidate

@@ -1,4 +1,4 @@
-module media_server.go
+module media_server
 
 go 1.22.1
 
