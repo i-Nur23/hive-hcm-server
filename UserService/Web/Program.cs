@@ -73,6 +73,11 @@ services.AddMassTransit(x =>
             h.Password("guest");
         });
 
+        cfg.ReceiveEndpoint("new-user-account", e =>
+        {
+            e.ConfigureConsumer<NewUserConsumer>(context);
+        });
+
         cfg.ConfigureEndpoints(context);
     });
 });

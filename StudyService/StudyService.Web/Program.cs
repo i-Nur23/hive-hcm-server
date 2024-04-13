@@ -8,6 +8,7 @@ using StudyService.Persistence.Extensions;
 using StudyService.Web.Background;
 using StudyService.Web.Consumer;
 using System.Text;
+using static MassTransit.Logging.OperationName;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,6 +71,21 @@ services.AddMassTransit(x =>
         {
             h.Username("guest");
             h.Password("guest");
+        });
+
+        cfg.ReceiveEndpoint("new-user-study", e =>
+        {
+            e.ConfigureConsumer<NewUserConsumer>(context);
+        });
+
+        cfg.ReceiveEndpoint("company-created-study", e =>
+        {
+            e.ConfigureConsumer<CompanyCreatedConsumer>(context);
+        });
+
+        cfg.ReceiveEndpoint("user-update-study", e =>
+        {
+            e.ConfigureConsumer<UserUpdatedConsumer>(context);
         });
 
         cfg.ConfigureEndpoints(context);
