@@ -28,5 +28,11 @@ namespace RecruitmentService.Domain.Entities
 
         [NotMapped]
         public string? Schedule => ScheduleType.GetAttributeOfType<NameAttribute>()?.Name;
+
+        public ICollection<Job> Jobs { get; set; }
+
+        public List<Response> Responses { get; set; }
+
+        public ICollection<Vacancy> Vacancies { get; set; }
     }
 }

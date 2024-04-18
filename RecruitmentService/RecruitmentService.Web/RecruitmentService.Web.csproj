@@ -12,6 +12,12 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="BackgroundServices\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RecruitmentService.Application\RecruitmentService.Application.csproj" />
+    <ProjectReference Include="..\RecruitmentService.Persistance\RecruitmentService.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

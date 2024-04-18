@@ -19,7 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Configurations\" />
+    <ProjectReference Include="..\RecruitmentService.Application\RecruitmentService.Application.csproj" />
+    <ProjectReference Include="..\RecruitmentService.Domain\RecruitmentService.Domain.csproj" />
   </ItemGroup>
 
 </Project>
