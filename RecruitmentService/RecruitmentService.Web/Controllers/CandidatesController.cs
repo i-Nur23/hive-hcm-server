@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RecruitmentService.Application.Common.Dtos.Candidates;
-using RecruitmentService.Application.Services.Candidates.Commands.CreateCandidate;
-using RecruitmentService.Application.Services.Candidates.Commands.DeleteCandidate;
+using RecruitmentService.Application.RequestHandlers.Candidates.Commands.CreateCandidate;
+using RecruitmentService.Application.RequestHandlers.Candidates.Commands.DeleteCandidate;
 
 namespace RecruitmentService.Web.Controllers
 {

@@ -6,7 +6,7 @@ using RecruitmentService.Application.Common;
 using RecruitmentService.Application.Interfaces;
 using RecruitmentService.Domain.Entities;
 
-namespace RecruitmentService.Application.Services.Candidates.Commands.DeleteCandidate
+namespace RecruitmentService.Application.RequestHandlers.Candidates.Commands.DeleteCandidate
 {
     public class DeleteCandidateCommandHandler : 
         BaseRequestHandler,

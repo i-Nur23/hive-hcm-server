@@ -7,7 +7,7 @@ using RecruitmentService.Application.Common;
 using RecruitmentService.Application.Interfaces;
 using RecruitmentService.Domain.Entities;
 
-namespace RecruitmentService.Application.Services.Candidates.Commands.CreateCandidate
+namespace RecruitmentService.Application.RequestHandlers.Candidates.Commands.CreateCandidate
 {
     public class CreateCandidateCommandHandler : 
         BaseRequestHandler,

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using RecruitmentService.Application.Common.Dtos.Jobs;
 using RecruitmentService.Application.Common.Mappings;
-using RecruitmentService.Application.Services.Candidates.Commands.CreateCandidate;
+using RecruitmentService.Application.RequestHandlers.Candidates.Commands.CreateCandidate;
 using RecruitmentService.Domain.Entities;
 using RecruitmentService.Domain.Enums;
 

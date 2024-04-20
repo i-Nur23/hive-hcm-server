@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using RecruitmentService.Application.Common.Dtos.Candidates;
 
-namespace RecruitmentService.Application.Services.Candidates.Commands.CreateCandidate
+namespace RecruitmentService.Application.RequestHandlers.Candidates.Commands.CreateCandidate
 {
     public class CreateCandidateCommand : IRequest<Unit>
     {

@@ -18,6 +18,8 @@ namespace RecruitmentService.Application.Interfaces
 
         public DbSet<Response> Responses { get; }
 
+        public DbSet<Division> Divisions { get; }
+
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
         public Task MigrateDatabaseAsync(CancellationToken cancellationToken = default);

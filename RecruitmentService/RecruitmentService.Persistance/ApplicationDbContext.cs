@@ -19,6 +19,8 @@ namespace RecruitmentService.Persistance
 
         public DbSet<Response> Responses { get; set; }
 
+        public DbSet<Division> Divisions { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
             : base(options) { }
 

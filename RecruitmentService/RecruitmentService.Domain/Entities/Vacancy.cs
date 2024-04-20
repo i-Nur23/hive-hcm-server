@@ -16,6 +16,10 @@
 
         public string About { get; set; }
 
+        public Guid DivisionId { get; set; }
+
+        public Division Division { get; set; }
+
         public List<Response> Responses { get; set; }
 
         public ICollection<Requirement> Requirements { get; set; }

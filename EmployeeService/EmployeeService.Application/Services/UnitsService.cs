@@ -1,8 +1,10 @@
-﻿using Core.Exceptions;
+﻿using Core.Events;
+using Core.Exceptions;
 using EmployeeService.Application.Interfaces;
 using EmployeeService.Models.Dtos;
 using EmployeeService.Models.Entities;
 using EmployeeService.Persistence.Repositories.Interfaces;
+using MassTransit;
 
 namespace EmployeeService.Application.Services
 {
@@ -11,15 +13,18 @@ namespace EmployeeService.Application.Services
         private readonly IUnitsRepository _unitsRepository;
         private readonly IDatabaseRepository _databaseRepository;
         private readonly IEmployeesRepository _employeesRepository;  
+        private readonly IPublishEndpoint _publishEndpoint;
 
         public UnitsService(
             IDatabaseRepository databaseRepository,
             IUnitsRepository unitsRepository,
-            IEmployeesRepository employeesRepository)
+            IEmployeesRepository employeesRepository,
+            IPublishEndpoint publishEndpoint)
         {
             _databaseRepository = databaseRepository;
             _unitsRepository = unitsRepository;
             _employeesRepository = employeesRepository;
+            _publishEndpoint = publishEndpoint;
         }
 
         public async Task<IEnumerable<UnitInfoDto>> GetLeadingUnitsAsync(
@@ -130,6 +135,12 @@ namespace EmployeeService.Application.Services
 
             await _unitsRepository.AddUnitAsync(unit, cancellationToken);
 
+            await _publishEndpoint.Publish(new UnitCreatedEvent
+            {
+                UnitId = unit.Id,
+                CompanyId = companyId,
+                LeadId = leadId
+            });
         }
 
         public async Task DeleteUnitAsync(
@@ -137,6 +148,11 @@ namespace EmployeeService.Application.Services
             CancellationToken cancellationToken = default)
         {
             await _unitsRepository.DeleteAsync(unitId, cancellationToken);
+
+            await _publishEndpoint.Publish(new UnitDeletedEvent
+            {
+                UnitId = unitId,
+            });
         }
     }
 }

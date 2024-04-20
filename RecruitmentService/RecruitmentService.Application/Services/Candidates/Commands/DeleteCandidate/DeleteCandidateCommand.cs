@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace RecruitmentService.Application.Services.Candidates.Commands.DeleteCandidate
+namespace RecruitmentService.Application.RequestHandlers.Candidates.Commands.DeleteCandidate
 {
     public class DeleteCandidateCommand : IRequest<Unit>
     {
