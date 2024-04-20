@@ -1,4 +1,5 @@
 using Core.Events;
+using Core.Middlewares;
 using EmployeeService.API.Background;
 using EmployeeService.API.Consumers;
 using EmployeeService.Application;
@@ -110,6 +111,8 @@ app.UseStaticFiles();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseCustomMiddlewares();
 
 app.UseCors("AllowAll");
 

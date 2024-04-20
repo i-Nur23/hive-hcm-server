@@ -15,8 +15,6 @@ namespace RecruitmentService.Domain.Entities
 
         public DateTime BitrhDate { get; set; }
 
-        public int Expirience { get; set; }
-
         public string About { get; set; }
 
         public EmploymentType EmploymentType { get; set; }
@@ -28,6 +26,9 @@ namespace RecruitmentService.Domain.Entities
 
         [NotMapped]
         public string? Schedule => ScheduleType.GetAttributeOfType<NameAttribute>()?.Name;
+
+        [NotMapped]
+        public int Expirience => Jobs?.Sum(x => x.Expirience) ?? 0;
 
         public ICollection<Job> Jobs { get; set; }
 

@@ -4,7 +4,7 @@ using RecruitmentService.Domain.Entities;
 
 namespace RecruitmentService.Application.Interfaces
 {
-    public interface IApplicationDbContext
+    public interface IApplicationDbContext : IDisposable
     {
         public DbSet<Candidate> Candidates { get; }
 
