@@ -11,5 +11,7 @@
         public string Email { get; set; }
 
         public string CompanyName { get; set; }
+
+        public Guid CompanyId { get; set; }
     }
 }

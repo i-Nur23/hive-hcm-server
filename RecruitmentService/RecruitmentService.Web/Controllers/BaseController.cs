@@ -21,5 +21,15 @@ namespace RecruitmentService.Web.Controllers
                     : throw new ForbiddenException();
             }
         }
+
+        protected Guid CompanyId 
+        { 
+            get
+            {
+                return Guid.TryParse(User.FindFirst("CompanyId")?.Value, out Guid id)
+                    ? id
+                    : new Guid();
+            }
+        }
     }
 }

@@ -41,7 +41,8 @@ namespace EmployeeService.Application.Services
                 await _databaseRepository.BeginTransactionAsync(cancellationToken);
                 
                 Company company = new Company() 
-                { 
+                {
+                    Id = newCeo.CompanyId,
                     Name = newCeo.CompanyName,
                 };
 
@@ -170,7 +171,8 @@ namespace EmployeeService.Application.Services
                     Id = id,
                     Name = newUserDto.Name,
                     Role = newUserDto.Role,
-                    Surname = newUserDto.Surname
+                    Surname = newUserDto.Surname,
+                    CompanyId = unit.CompanyId,
                 },
                 cancellationToken,
                 RequestTimeout.After(s: 30));

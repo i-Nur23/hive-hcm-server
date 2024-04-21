@@ -23,7 +23,8 @@ namespace UserService.Auth
                 new Claim(ClaimTypes.Name, user.Name),
                 new Claim(ClaimTypes.Surname, user.Surname),
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role, user.Role)
+                new Claim(ClaimTypes.Role, user.Role),
+                new Claim("CompanyId", user.CompanyId.ToString())
             };
 
             var securityToken = new JwtSecurityToken(

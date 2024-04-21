@@ -1,29 +1,23 @@
 ﻿using Core.Events;
 using MassTransit;
-using MassTransit.Mediator;
-using RecruitmentService.Application.Services.Divisions.Commands.DeleteDivision;
+using RecruitmentService.Application.Interfaces;
 
 namespace RecruitmentService.Web.Consumers
 {
     public class UnitDeletedConsumer : IConsumer<UnitDeletedEvent>
     {
-        private readonly IMediator _mediator;
+        private readonly IDivisionsService _divisionsService;
 
         public UnitDeletedConsumer(
-            IMediator mediator)
+            IDivisionsService divisionsService)
         {
-            _mediator = mediator;
+            _divisionsService = divisionsService;
         }
 
         public async Task Consume(ConsumeContext<UnitDeletedEvent> context)
         {
-            var command = new DeleteDivisionCommand
-            {
-                UnitId = context.Message.UnitId
-            };
-
-            await _mediator.Send( 
-                command, 
+            await _divisionsService.DeleteAsync(
+                context.Message.UnitId,
                 context.CancellationToken);
         }
     }

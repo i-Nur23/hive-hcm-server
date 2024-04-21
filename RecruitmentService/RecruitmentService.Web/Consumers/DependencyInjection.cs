@@ -1,6 +1,4 @@
 ﻿using MassTransit;
-using Microsoft.Extensions.DependencyInjection;
-using RecruitmentService.Application.Services.Divisions.Commands.DeleteDivision;
 
 namespace RecruitmentService.Web.Consumers
 {

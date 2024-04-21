@@ -114,7 +114,8 @@ namespace UserService.Services
                     Surname = newUser.Surname,
                     Name = newUser.Name,
                     Password = hashedPassword,
-                    RoleType = newUser.Role
+                    RoleType = newUser.Role,
+                    CompanyId = newUser.CompanyId,
                 };
 
                 await _usersRepository.AddAsync(user, cancellationToken);

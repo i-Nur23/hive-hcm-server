@@ -12,6 +12,8 @@ namespace Core.Events
 
         public string Email { get; set; }
 
+        public Guid CompanyId { get; set; }
+
         public Role Role { get; set; }
     }
 }

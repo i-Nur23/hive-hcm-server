@@ -27,6 +27,9 @@ namespace UserService.Web.Controllers
         [Route("registrate")]
         public async Task<IActionResult> Registrate([FromBody] UserRegistrateDto registrateDto)
         {
+            Guid companyId = Guid.NewGuid();
+            registrateDto.CompanyId = companyId;
+
             UserInfoDto userInfo = await _authService.RegistrateAsync(registrateDto);
 
             await _publishEndpoint.Publish(new CompanyCreatedEvent ()
@@ -35,7 +38,8 @@ namespace UserService.Web.Controllers
                 CompanyName = userInfo.CompanyName,
                 Email = userInfo.Email,
                 Name = userInfo.Name,
-                Surname = userInfo.Surname  
+                Surname = userInfo.Surname,
+                CompanyId = companyId,
             });
 
             return Ok(userInfo);

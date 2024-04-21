@@ -17,4 +17,8 @@
     <ProjectReference Include="..\RecruitmentService.Domain\RecruitmentService.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="RequestHandlers\Divisions\" />
+  </ItemGroup>
+
 </Project>

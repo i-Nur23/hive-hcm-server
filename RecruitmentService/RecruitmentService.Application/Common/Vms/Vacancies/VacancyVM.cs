@@ -1,6 +1,10 @@
-﻿namespace RecruitmentService.Domain.Entities
+﻿using AutoMapper;
+using RecruitmentService.Application.Common.Mappings;
+using RecruitmentService.Domain.Entities;
+
+namespace RecruitmentService.Application.Common.Vms.Vacancies
 {
-    public class Vacancy
+    public class VacancyVM : IMapWith<Vacancy>
     {
         public Guid Id { get; set; }
 
@@ -20,14 +24,9 @@
 
         public Guid HrId { get; set; }
 
-        public Division Division { get; set; }
-
-        public List<Response> Responses { get; set; }
-
-        public ICollection<Requirement> Requirements { get; set; }
-
-        public ICollection<Offer> Offers { get; set; }
-
-        public ICollection<Candidate> Candidates { get; set; }
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<Vacancy, VacancyVM>().ReverseMap();
+        }
     }
 }

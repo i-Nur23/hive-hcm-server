@@ -80,6 +80,7 @@ namespace UserService.Services
                     Password = await _hashService.CreateHashAsync(registrateDto.Password, cancellationToken),
                     Surname = registrateDto.Surname,
                     RoleType = Role.CEO,
+                    CompanyId = registrateDto.CompanyId,
                 };
 
                 await _usersRepository.AddAsync(newUser, cancellationToken);
@@ -94,7 +95,8 @@ namespace UserService.Services
                     Name = registrateDto.Name,
                     Surname = registrateDto.Surname,
                     Token = token,
-                    Role = "CEO"
+                    Role = "CEO",
+                    CompanyId = registrateDto.CompanyId
                 };
 
                 await _databaseRepository.CommitTransactionAsync();

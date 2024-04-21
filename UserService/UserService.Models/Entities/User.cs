@@ -14,6 +14,8 @@ namespace UserService.Models.Entities
 
         public string Password { get; set; }
 
+        public Guid CompanyId { get; set; }
+
         public Role RoleType { get; set; }
 
         public string Role => $"{RoleType}";
