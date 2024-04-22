@@ -7,6 +7,8 @@ namespace RecruitmentService.Domain.Entities
 {
     public class Response
     {
+        public Guid Id { get; set; }
+
         public Guid CandidateId { get; set; }
 
         public Guid VacancyId { get; set; }
@@ -16,6 +18,8 @@ namespace RecruitmentService.Domain.Entities
         public Vacancy Vacancy { get; set; }
 
         public ResponseStatus Status { get; set; }
+
+        public DateTime UpdatedAt { get; set; }
 
         [NotMapped]
         public string TextStatus => Status.GetAttributeOfType<NameAttribute>().Name;

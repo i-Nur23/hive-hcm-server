@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecruitmentService.Persistance;
 
@@ -11,9 +12,11 @@ using RecruitmentService.Persistance;
 namespace RecruitmentService.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240422073907_AddedUpdatedAtToResponse")]
+    partial class AddedUpdatedAtToResponse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -140,8 +143,7 @@ namespace RecruitmentService.Persistance.Migrations
 
             modelBuilder.Entity("RecruitmentService.Domain.Entities.Response", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("VacancyId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CandidateId")
@@ -153,14 +155,9 @@ namespace RecruitmentService.Persistance.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("VacancyId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
+                    b.HasKey("VacancyId", "CandidateId");
 
                     b.HasIndex("CandidateId");
-
-                    b.HasIndex("VacancyId");
 
                     b.ToTable("Responses");
                 });

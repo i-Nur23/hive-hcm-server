@@ -25,11 +25,7 @@ namespace RecruitmentService.Persistance.Configurations
                     j => j
                         .HasOne(r => r.Vacancy)
                         .WithMany(v => v.Responses)
-                        .HasForeignKey(r => r.VacancyId),
-                    j =>
-                    {
-                        j.HasKey(t => new { t.VacancyId, t.CandidateId });
-                    }
+                        .HasForeignKey(r => r.VacancyId)
                 );
         }
     }
