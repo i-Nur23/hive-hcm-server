@@ -57,6 +57,8 @@ namespace RecruitmentService.Web.Controllers
                 Vacancy = vacancy,
             };
 
+            command.Vacancy.HrId = UserId;
+
             await Mediator.Send(command, cancellationToken);    
 
             return Ok();

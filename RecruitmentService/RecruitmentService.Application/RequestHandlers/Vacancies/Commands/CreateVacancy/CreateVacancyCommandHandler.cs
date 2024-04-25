@@ -19,6 +19,8 @@ namespace RecruitmentService.Application.RequestHandlers.Vacancies.Commands.Crea
         {
             Vacancy vacancy = _mapper.Map<Vacancy>(request.Vacancy);
 
+            vacancy.Id = Guid.NewGuid();
+
             await _dbContext.Vacancies.AddAsync(vacancy, cancellationToken);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
