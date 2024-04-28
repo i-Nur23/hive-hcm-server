@@ -10,24 +10,24 @@ namespace RecruitmentService.Application.RequestHandlers.Vacancies.Queries.GetLe
 {
     public class GetLeadVacanciesQueryHandler : 
         BaseRequestHandler,
-        IRequestHandler<GetLeadVacanciesQuery, VacanciesVm>
+        IRequestHandler<GetLeadVacanciesQuery, LeadVacanciesVM>
     {
         public GetLeadVacanciesQueryHandler(IApplicationDbContext dbContext, IMapper mapper) 
             : base (dbContext, mapper) { }
 
-        public async Task<VacanciesVm> Handle(
+        public async Task<LeadVacanciesVM> Handle(
             GetLeadVacanciesQuery request, 
             CancellationToken cancellationToken)
         {
-            IEnumerable<VacancyVM> vacancies = _dbContext.Vacancies
+            IEnumerable<LeadVacancyVM> vacancies = _dbContext.Vacancies
                 .Include(v => v.Division)
+                .Include(v => v.Responses)
+                .ThenInclude(r => r.Candidate)
                 .Where(v => v.Division.LeadId.Equals(request.LeadId))
-                .ProjectTo<VacancyVM>(_mapper.ConfigurationProvider)
-                .Skip((request.Page - 1) * request.Limit)
-                .Take(request.Limit)
+                .ProjectTo<LeadVacancyVM>(_mapper.ConfigurationProvider)
                 .ToList();
 
-            return new VacanciesVm
+            return new LeadVacanciesVM
             {
                 Vacancies = vacancies,
                 TotalCount = vacancies.Count()

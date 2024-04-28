@@ -16,15 +16,11 @@ namespace RecruitmentService.Web.Controllers
         [HttpGet("all")]
         [Authorize(Roles = "HR")]
         public async Task<IActionResult> GetAllVacanciesAsync(
-            int limit,
-            int page,
             CancellationToken cancellationToken)
         {
             var query = new GetAllVacanciesQuery
             {
-                HrId = UserId,
-                Limit = limit,
-                Page = page,
+                HrId = UserId
             };
 
             return Ok(await Mediator.Send(query, cancellationToken));
@@ -32,15 +28,11 @@ namespace RecruitmentService.Web.Controllers
 
         [HttpGet("leading")]
         public async Task<IActionResult> GetVacanciesForLeadAsync(
-            int limit,
-            int page,
             CancellationToken cancellationToken)
         {
             var query = new GetLeadVacanciesQuery
             {
-                LeadId = UserId,
-                Limit = limit,
-                Page = page,
+                LeadId = UserId
             };
 
             return Ok(await Mediator.Send(query, cancellationToken));

@@ -21,10 +21,10 @@ namespace RecruitmentService.Application.RequestHandlers.Vacancies.Queries.GetAl
         {
             IEnumerable<VacancyVM> vacancies = _dbContext.Vacancies
                 .Include(v => v.Division)
+                .Include(v => v.Responses)
+                .ThenInclude(r => r.Candidate)
                 .Where(v => v.HrId.Equals(request.HrId))
                 .ProjectTo<VacancyVM>(_mapper.ConfigurationProvider)
-                .Skip((request.Page - 1) * request.Limit)
-                .Take(request.Limit)
                 .ToList();
 
             return new VacanciesVm
