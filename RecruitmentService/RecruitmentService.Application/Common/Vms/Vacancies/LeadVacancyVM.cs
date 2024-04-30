@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
+using RecruitmentService.Application.Common.Mappings;
 using RecruitmentService.Application.Common.Vms.Responses;
 using RecruitmentService.Domain.Entities;
 
 namespace RecruitmentService.Application.Common.Vms.Vacancies
 {
-    public class LeadVacancyVM
+    public class LeadVacancyVM : IMapWith<Vacancy>
     {
         public Guid Id { get; set; }
 
@@ -32,7 +33,7 @@ namespace RecruitmentService.Application.Common.Vms.Vacancies
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Vacancy, VacancyVM>()
+            profile.CreateMap<Vacancy, LeadVacancyVM>()
                 .ForMember(
                     dest => dest.Requirements,
                     opt => opt.MapFrom(src => src.Requirements.Select(r => r.Description)))
@@ -41,7 +42,7 @@ namespace RecruitmentService.Application.Common.Vms.Vacancies
                     opt => opt.MapFrom(src => src.Offers.Select(o => o.Description)));
 
 
-            profile.CreateMap<VacancyVM, Vacancy>()
+            profile.CreateMap<LeadVacancyVM, Vacancy>()
                 .ForMember(
                     dest => dest.Requirements,
                     opt => opt.MapFrom(src => src.Requirements.Select(r => new Requirement { Description = r })))
