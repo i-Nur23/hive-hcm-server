@@ -30,6 +30,17 @@ namespace EmployeeService.API.Controllers
             return Ok();
         }
 
+        [HttpGet("company")]
+        public async Task<IActionResult> GetCompanyUnits(
+            CancellationToken cancellationToken)
+        {
+            IEnumerable<UnitInfoDto> units = await _unitsService.GetCompanyUnitsAsync(
+                CompanyId, 
+                cancellationToken);
+
+            return Ok(units);
+        }
+
         [HttpDelete("{unitId}")]
         public async Task<IActionResult> DeleteUnitAsync(
             Guid unitId,

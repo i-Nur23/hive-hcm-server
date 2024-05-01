@@ -17,6 +17,16 @@ namespace EmployeeService.API.Controllers
                     ? value
                     : throw new ForbiddenException();
             }
-        } 
+        }
+
+        protected Guid CompanyId
+        {
+            get
+            {
+                return Guid.TryParse(User.FindFirst("CompanyId")?.Value, out Guid id)
+                    ? id
+                    : new Guid();
+            }
+        }
     }
 }

@@ -9,6 +9,10 @@ namespace EmployeeService.Application.Interfaces
             Guid employeeId,
             CancellationToken cancellationToken = default);
 
+        public Task<IEnumerable<UnitInfoDto>> GetCompanyUnitsAsync(
+            Guid companyId,
+            CancellationToken cancellationToken = default);
+
         public Task<Unit> GetUnitAsync(
             Guid unitId,
             CancellationToken cancellationToken = default);
