@@ -6,5 +6,7 @@ namespace RecruitmentService.Application.RequestHandlers.Vacancies.Commands.Upda
     public class UpdateVacancyCommand : IRequest<Unit>
     {
         public VacancyVM Vacancy { get; set; }
+
+        public Guid HrId { get; set; }
     }
 }

@@ -28,7 +28,7 @@ namespace RecruitmentService.Application.Common.Vms.Vacancies
 
         public IEnumerable<string> Offers { get; set; }
 
-        public IEnumerable<Response> Responses { get; set; }
+        public IEnumerable<Response>? Responses { get; set; }
 
         public void Mapping(Profile profile)
         {

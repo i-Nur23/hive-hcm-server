@@ -18,7 +18,9 @@ namespace RecruitmentService.Application.RequestHandlers.Vacancies.Commands.Upda
             CancellationToken cancellationToken)
         {
             Vacancy vacancy = _mapper.Map<Vacancy>(request.Vacancy);
+            vacancy.HrId = request.HrId;
 
+            _dbContext.Vacancies.Attach(vacancy);   
             _dbContext.Vacancies.Update(vacancy);
             await _dbContext.SaveChangesAsync(cancellationToken);
 

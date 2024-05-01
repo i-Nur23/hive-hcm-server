@@ -65,6 +65,7 @@ namespace RecruitmentService.Web.Controllers
             var command = new UpdateVacancyCommand
             {
                 Vacancy = vacancy,
+                HrId = UserId
             };
 
             await Mediator.Send(command, cancellationToken);
