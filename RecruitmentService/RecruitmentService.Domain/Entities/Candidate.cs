@@ -13,7 +13,7 @@ namespace RecruitmentService.Domain.Entities
 
         public string Surname { get; set; }
 
-        public DateTime BitrhDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public string About { get; set; }
 

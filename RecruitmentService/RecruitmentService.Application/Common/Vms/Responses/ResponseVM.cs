@@ -43,7 +43,7 @@ namespace RecruitmentService.Application.Common.Vms.Responses
                     dest => dest.MapFrom(src => src.Candidate.Surname))
                 .ForMember(
                     opt => opt.BitrhDate,
-                    dest => dest.MapFrom(src => src.Candidate.BitrhDate))
+                    dest => dest.MapFrom(src => src.Candidate.BirthDate))
                 .ForMember(
                     opt => opt.About,
                     dest => dest.MapFrom(src => src.Candidate.About))
