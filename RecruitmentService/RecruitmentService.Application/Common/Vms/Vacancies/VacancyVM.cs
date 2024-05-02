@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RecruitmentService.Application.Common.Mappings;
+using RecruitmentService.Application.Common.Vms.Responses;
 using RecruitmentService.Domain.Entities;
 
 namespace RecruitmentService.Application.Common.Vms.Vacancies
@@ -28,7 +29,7 @@ namespace RecruitmentService.Application.Common.Vms.Vacancies
 
         public IEnumerable<string> Offers { get; set; }
 
-        public IEnumerable<Response>? Responses { get; set; }
+        public IEnumerable<ResponseVM>? Responses { get; set; }
 
         public void Mapping(Profile profile)
         {

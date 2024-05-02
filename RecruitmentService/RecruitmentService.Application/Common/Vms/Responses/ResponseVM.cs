@@ -15,7 +15,7 @@ namespace RecruitmentService.Application.Common.Vms.Responses
 
         public string Surname { get; set; }
 
-        public DateTime BitrhDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public string About { get; set; }
 
@@ -42,7 +42,7 @@ namespace RecruitmentService.Application.Common.Vms.Responses
                     opt => opt.Surname,
                     dest => dest.MapFrom(src => src.Candidate.Surname))
                 .ForMember(
-                    opt => opt.BitrhDate,
+                    opt => opt.BirthDate,
                     dest => dest.MapFrom(src => src.Candidate.BirthDate))
                 .ForMember(
                     opt => opt.About,
