@@ -13,10 +13,6 @@ namespace RecruitmentService.Persistance
 
         public DbSet<Job> Jobs { get; set; }
 
-        public DbSet<Offer> Offers { get; set; }
-
-        public DbSet<Requirement> Requirements { get; set; }
-
         public DbSet<Response> Responses { get; set; }
 
         public DbSet<Division> Divisions { get; set; }

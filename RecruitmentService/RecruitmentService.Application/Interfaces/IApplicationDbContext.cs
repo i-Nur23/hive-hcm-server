@@ -12,10 +12,6 @@ namespace RecruitmentService.Application.Interfaces
 
         public DbSet<Job> Jobs { get; }
 
-        public DbSet<Offer> Offers { get; }
-
-        public DbSet<Requirement> Requirements { get; }
-
         public DbSet<Response> Responses { get; }
 
         public DbSet<Division> Divisions { get; }

@@ -15,6 +15,18 @@ namespace RecruitmentService.Domain.Entities
 
         public DateTime BirthDate { get; set; }
 
+        [NotMapped]
+        public int Age
+        {
+            get
+            {
+                var today = DateTime.Today;
+                var age = today.Year - BirthDate.Year;
+                if (BirthDate.Date > today.AddYears(-age)) age--;
+                return age;
+            }
+        }
+
         public string About { get; set; }
 
         public EmploymentType EmploymentType { get; set; }

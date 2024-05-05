@@ -17,6 +17,8 @@ namespace RecruitmentService.Application.Common.Vms.Responses
 
         public DateTime BirthDate { get; set; }
 
+        public int Age { get; set; }
+
         public string About { get; set; }
 
         public string? Employment { get; set; }
@@ -50,6 +52,9 @@ namespace RecruitmentService.Application.Common.Vms.Responses
                 .ForMember(
                     opt => opt.Employment,
                     dest => dest.MapFrom(src => src.Candidate.Employment))
+                .ForMember(
+                    opt => opt.Age,
+                    dest => dest.MapFrom(src => src.Candidate.Age))
                 .ForMember(
                     opt => opt.Schedule,
                     dest => dest.MapFrom(src => src.Candidate.Schedule));

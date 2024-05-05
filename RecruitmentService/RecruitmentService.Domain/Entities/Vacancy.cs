@@ -1,4 +1,6 @@
-﻿namespace RecruitmentService.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace RecruitmentService.Domain.Entities
 {
     public class Vacancy
     {
@@ -24,9 +26,11 @@
 
         public List<Response> Responses { get; set; }
 
-        public ICollection<Requirement> Requirements { get; set; }
+        [Column(TypeName = "ntext")]
+        public string OffersDescription { get; set; }
 
-        public ICollection<Offer> Offers { get; set; }
+        [Column(TypeName = "ntext")]
+        public string RequirementsDescription { get; set; }
 
         public ICollection<Candidate> Candidates { get; set; }
     }

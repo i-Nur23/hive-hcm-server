@@ -25,9 +25,9 @@ namespace RecruitmentService.Application.Common.Vms.Vacancies
 
         public Guid HrId { get; set; }
 
-        public IEnumerable<string> Requirements { get; set; }
+        public string Requirements { get; set; }
 
-        public IEnumerable<string> Offers { get; set; }
+        public string Offers { get; set; }
 
         public IEnumerable<ResponseVM>? Responses { get; set; }
 
@@ -36,18 +36,18 @@ namespace RecruitmentService.Application.Common.Vms.Vacancies
             profile.CreateMap<Vacancy, VacancyVM>()
                 .ForMember(
                     dest => dest.Requirements, 
-                    opt => opt.MapFrom(src => src.Requirements.Select(r => r.Description)))
+                    opt => opt.MapFrom(src => src.RequirementsDescription))
                 .ForMember(
                     dest => dest.Offers, 
-                    opt => opt.MapFrom(src => src.Offers.Select(o => o.Description)));
+                    opt => opt.MapFrom(src => src.OffersDescription));
 
             profile.CreateMap<VacancyVM, Vacancy>()
                 .ForMember(
-                    dest => dest.Requirements,
-                    opt => opt.MapFrom(src => src.Requirements.Select(r => new Requirement { Description = r })))
+                    dest => dest.RequirementsDescription,
+                    opt => opt.MapFrom(src => src.Requirements))
                 .ForMember(
-                    dest => dest.Offers,
-                    opt => opt.MapFrom(src => src.Offers.Select(o => new Offer { Description = o })))
+                    dest => dest.OffersDescription,
+                    opt => opt.MapFrom(src => src.Offers))
                 .ForMember(
                     dist => dist.Responses,
                     opt => opt.Ignore());

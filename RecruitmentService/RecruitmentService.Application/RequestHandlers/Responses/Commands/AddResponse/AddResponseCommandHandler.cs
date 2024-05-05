@@ -22,7 +22,7 @@ namespace RecruitmentService.Application.RequestHandlers.Responses.Commands.AddR
 
             response.Id = Guid.NewGuid();
             response.Status = ResponseStatus.NotProcessed;
-            response.UpdatedAt = DateTime.UtcNow;
+            response.UpdatedAt = DateTime.Now;
 
             await _dbContext.Responses.AddAsync(response, cancellationToken);
             await _dbContext.SaveChangesAsync(cancellationToken);

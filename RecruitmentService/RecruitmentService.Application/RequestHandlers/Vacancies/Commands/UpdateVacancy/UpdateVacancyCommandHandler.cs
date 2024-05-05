@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Exceptions;
 using MediatR;
 using RecruitmentService.Application.Common;
 using RecruitmentService.Application.Interfaces;
@@ -18,6 +19,7 @@ namespace RecruitmentService.Application.RequestHandlers.Vacancies.Commands.Upda
             CancellationToken cancellationToken)
         {
             Vacancy vacancy = _mapper.Map<Vacancy>(request.Vacancy);
+            
             vacancy.HrId = request.HrId;
 
             _dbContext.Vacancies.Attach(vacancy);   

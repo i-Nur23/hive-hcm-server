@@ -98,46 +98,6 @@ namespace RecruitmentService.Persistance.Migrations
                     b.ToTable("Jobs");
                 });
 
-            modelBuilder.Entity("RecruitmentService.Domain.Entities.Offer", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("VacancyId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VacancyId");
-
-                    b.ToTable("Offers");
-                });
-
-            modelBuilder.Entity("RecruitmentService.Domain.Entities.Requirement", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("VacancyId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VacancyId");
-
-                    b.ToTable("Requirements");
-                });
-
             modelBuilder.Entity("RecruitmentService.Domain.Entities.Response", b =>
                 {
                     b.Property<Guid>("Id")
@@ -187,9 +147,17 @@ namespace RecruitmentService.Persistance.Migrations
                     b.Property<Guid>("HrId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("OffersDescription")
+                        .IsRequired()
+                        .HasColumnType("ntext");
+
                     b.Property<string>("Position")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RequirementsDescription")
+                        .IsRequired()
+                        .HasColumnType("ntext");
 
                     b.Property<int>("SalaryFrom")
                         .HasColumnType("int");
@@ -213,28 +181,6 @@ namespace RecruitmentService.Persistance.Migrations
                         .IsRequired();
 
                     b.Navigation("Candidate");
-                });
-
-            modelBuilder.Entity("RecruitmentService.Domain.Entities.Offer", b =>
-                {
-                    b.HasOne("RecruitmentService.Domain.Entities.Vacancy", "Vacancy")
-                        .WithMany("Offers")
-                        .HasForeignKey("VacancyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Vacancy");
-                });
-
-            modelBuilder.Entity("RecruitmentService.Domain.Entities.Requirement", b =>
-                {
-                    b.HasOne("RecruitmentService.Domain.Entities.Vacancy", "Vacancy")
-                        .WithMany("Requirements")
-                        .HasForeignKey("VacancyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Vacancy");
                 });
 
             modelBuilder.Entity("RecruitmentService.Domain.Entities.Response", b =>
@@ -276,10 +222,6 @@ namespace RecruitmentService.Persistance.Migrations
 
             modelBuilder.Entity("RecruitmentService.Domain.Entities.Vacancy", b =>
                 {
-                    b.Navigation("Offers");
-
-                    b.Navigation("Requirements");
-
                     b.Navigation("Responses");
                 });
 #pragma warning restore 612, 618
