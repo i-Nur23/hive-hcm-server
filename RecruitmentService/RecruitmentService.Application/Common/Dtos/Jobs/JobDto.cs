@@ -14,7 +14,7 @@ namespace RecruitmentService.Application.Common.Dtos.Jobs
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<JobDto, Job>();
+            profile.CreateMap<JobDto, Job>().ReverseMap();
         }
     }
 }

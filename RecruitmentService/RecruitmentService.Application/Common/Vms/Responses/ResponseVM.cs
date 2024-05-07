@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using RecruitmentService.Application.Common.Dtos.Jobs;
 using RecruitmentService.Application.Common.Mappings;
 using RecruitmentService.Domain.Entities;
 using RecruitmentService.Domain.Enums;
@@ -31,6 +32,14 @@ namespace RecruitmentService.Application.Common.Vms.Responses
 
         public string TextStatus { get; set; }
 
+        public IEnumerable<JobDto> Jobs { get; set; }
+
+        public int SummaryExpirience => Jobs.Sum(j => j.Expirience);
+
+        public int Years => SummaryExpirience / 12;
+
+        public int Months => SummaryExpirience % 12;
+
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Response, ResponseVM>()
@@ -57,7 +66,10 @@ namespace RecruitmentService.Application.Common.Vms.Responses
                     dest => dest.MapFrom(src => src.Candidate.Age))
                 .ForMember(
                     opt => opt.Schedule,
-                    dest => dest.MapFrom(src => src.Candidate.Schedule));
+                    dest => dest.MapFrom(src => src.Candidate.Schedule))
+                .ForMember(
+                    opt => opt.Jobs,
+                    dest => dest.MapFrom(src => src.Candidate.Jobs));
         }
     }
 }
