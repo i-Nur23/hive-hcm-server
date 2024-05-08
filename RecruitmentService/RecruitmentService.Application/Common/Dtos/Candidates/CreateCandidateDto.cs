@@ -13,6 +13,8 @@ namespace RecruitmentService.Application.Common.Dtos.Candidates
 
         public string Surname { get; set; }
 
+        public string Email { get; set; }
+
         public DateTime BirthDate { get; set; }
 
         public string About { get; set; }

@@ -67,6 +67,7 @@ services.AddMassTransit(x =>
     x.AddConsumer<CreateCompanyConsumer>();
     x.AddConsumer<CountriesScrapedConsumer>();
     x.AddConsumer<UserUpdatedConsumer>();
+    x.AddConsumer<CandidateHireConsumer>();
 
     x.AddRequestClient<NewUserEvent>();
 
@@ -76,6 +77,11 @@ services.AddMassTransit(x =>
         {
             h.Username("guest");
             h.Password("guest");
+        });
+
+        cfg.ReceiveEndpoint("candidate-hire-employee", e =>
+        {
+            e.ConfigureConsumer<CandidateHireConsumer>(context);
         });
 
         cfg.ConfigureEndpoints(context);

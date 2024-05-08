@@ -161,6 +161,7 @@ namespace EmployeeService.Application.Services
                         UnitId = newUserDto.UnitId,
                     }},
                     CompanyId = unit.CompanyId,
+                    BirthDate = newUserDto.BirthDate,
                 };
 
                 await _employeesRepository.AddAsync(employee, cancellationToken);

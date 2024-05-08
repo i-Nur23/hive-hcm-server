@@ -10,6 +10,8 @@ namespace EmployeeService.Models.Dtos
 
         public string Email { get; set; }
 
+        public DateTime? BirthDate { get; set; }
+
         public Guid UnitId { get; set; }
 
         public Role Role { get; set; }
