@@ -1,25 +1,39 @@
-using Microsoft.Extensions.Configuration;
-using RecruitmentService.Application.Common.Mappings;
-using RecruitmentService.Application.Interfaces;
-using RecruitmentService.Application;
-using RecruitmentService.Persistance;
-using System.Reflection;
-using Microsoft.OpenApi.Models;
+using Core.Middlewares;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using RecruitmentService.Application;
+using RecruitmentService.Application.Common.Mappings;
+using RecruitmentService.Application.Interfaces;
+using RecruitmentService.Persistance;
+using RecruitmentService.Web.BackgroundServices;
+using System.Reflection;
 using System.Text;
-using Core.Middlewares;
-using RecruitmentService.Web.Consumers;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddConsole();
 
 var services = builder.Services;
 
+services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("localhost", "/", h =>
+        {
+            h.Username("guest");
+            h.Password("guest");
+        });
+
+        cfg.ConfigureEndpoints(context);
+    });
+});
+
 services.AddApplication();
 services.AddPersistence(builder.Configuration);
+
+services.AddHostedService<RemoveProcessedResponsesService>();
 
 services.AddAutoMapper(config =>
 {

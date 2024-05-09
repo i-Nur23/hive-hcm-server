@@ -1,6 +1,7 @@
 ﻿using Core.Enums;
 using Core.Events;
 using Core.Exceptions;
+using Core.Extensions;
 using Core.Responses;
 using EmployeeService.Application.Interfaces;
 using EmployeeService.Models.Dtos;
@@ -146,7 +147,7 @@ namespace EmployeeService.Application.Services
             {
                 Unit unit = await _unitsRepository.GetUnitAsync(unit => unit.Id.Equals(newUserDto.UnitId));
 
-                Guid id = Guid.NewGuid();
+                Guid id = newUserDto.Id ?? Guid.NewGuid();
 
                 Employee employee = new Employee()
                 {
@@ -161,7 +162,7 @@ namespace EmployeeService.Application.Services
                         UnitId = newUserDto.UnitId,
                     }},
                     CompanyId = unit.CompanyId,
-                    BirthDate = newUserDto.BirthDate,
+                    BirthDate = newUserDto.BirthDate.SetKindUtc(),
                 };
 
                 await _employeesRepository.AddAsync(employee, cancellationToken);

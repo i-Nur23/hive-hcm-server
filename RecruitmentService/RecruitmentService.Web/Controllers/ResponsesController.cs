@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RecruitmentService.Application.Common.Dtos.Responses;
 using RecruitmentService.Application.RequestHandlers.Responses.Commands.AddResponse;
 using RecruitmentService.Application.RequestHandlers.Responses.Commands.ChangeStatus;
+using RecruitmentService.Application.RequestHandlers.Responses.Commands.HireCandidate;
 using RecruitmentService.Domain.Enums;
 
 namespace RecruitmentService.Web.Controllers
@@ -35,6 +36,23 @@ namespace RecruitmentService.Web.Controllers
             {
                 ResponseId = responseId,
                 NewStatus = responseStatus,
+            };
+
+            await Mediator.Send(command, cancellationToken);
+
+            return Ok();
+        }
+
+        [HttpPost("hire")]
+        public async Task<IActionResult> HireCandidateAsync(
+            Guid id,
+            bool isHr,
+            CancellationToken cancellationToken)
+        {
+            var command = new HireCandidateCommand
+            {
+                Id = id,
+                IsHr = isHr,
             };
 
             await Mediator.Send(command, cancellationToken);
