@@ -43,5 +43,7 @@ namespace EmployeeService.Models.Entities
 
         [NotMapped]
         public string Role => $"{RoleType}";
+
+        public EmployeeStatus EmployeeStatus { get; set; }
     }
 }

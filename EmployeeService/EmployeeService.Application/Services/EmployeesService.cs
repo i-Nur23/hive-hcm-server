@@ -17,20 +17,26 @@ namespace EmployeeService.Application.Services
         private readonly IDatabaseRepository _databaseRepository;
         private readonly IRequestClient<NewUserEvent> _newUserRequestClient;
         private readonly IUnitsRepository _unitsRepository;
+        private readonly IPublishEndpoint _publishEndpoint;
         private readonly IEmployeeUnitsRepository _employeeUnitsRepository;
+        private readonly IUnitsService _unitsService;
 
         public EmployeesService(
             IEmployeesRepository employeesRepository, 
             IDatabaseRepository databaseRepository,
             IRequestClient<NewUserEvent> newUserRequestClient,
             IUnitsRepository unitsRepository,
-            IEmployeeUnitsRepository employeeUnitsRepository)
+            IEmployeeUnitsRepository employeeUnitsRepository,
+            IPublishEndpoint publishEndpoint,
+            IUnitsService unitsService)
         {
             _employeesRepository = employeesRepository; 
             _databaseRepository = databaseRepository;
             _newUserRequestClient = newUserRequestClient;
             _unitsRepository = unitsRepository;
             _employeeUnitsRepository = employeeUnitsRepository;
+            _publishEndpoint = publishEndpoint;
+            _unitsService = unitsService;
         }
 
         public async Task AddCeoAsync(
@@ -54,7 +60,8 @@ namespace EmployeeService.Application.Services
                     Name = newCeo.Name,
                     Surname = newCeo.Surname,
                     RoleType = Role.CEO,
-                    Company = company
+                    Company = company,
+                    EmployeeStatus = EmployeeStatus.InCompany
                 };
 
                 await _employeesRepository.AddAsync(ceo, cancellationToken);
@@ -163,6 +170,7 @@ namespace EmployeeService.Application.Services
                     }},
                     CompanyId = unit.CompanyId,
                     BirthDate = newUserDto.BirthDate.SetKindUtc(),
+                    EmployeeStatus = EmployeeStatus.InCompany,
                 };
 
                 await _employeesRepository.AddAsync(employee, cancellationToken);
@@ -264,6 +272,39 @@ namespace EmployeeService.Application.Services
                 cancellationToken: cancellationToken);
 
             return employees;
+        }
+
+        public async Task<IEnumerable<Employee>> GetEmployeesByStatusAsync(
+            EmployeeStatus employeeStatus,
+            Guid companyId,
+            CancellationToken cancellationToken = default)
+        {
+            return await _employeesRepository.GetAllAsync(
+                employee => employee.EmployeeStatus.Equals(employeeStatus) && 
+                employee.CompanyId.Equals(companyId),
+                false,
+                false,
+                cancellationToken);
+        }
+
+        public async Task FireEmployeeAsync(
+            Guid employeeId, 
+            CancellationToken cancellationToken = default)
+        {
+            IEnumerable<UnitInfoDto> leadingUnits = await _unitsService.GetLeadingUnitsAsync(
+                employeeId,
+                cancellationToken);
+
+            foreach (UnitInfoDto unit in leadingUnits)
+            {
+                await _unitsService.DeleteUnitAsync(unit.Id, cancellationToken);
+            }
+
+            await _employeesRepository.DeleteAsync(employeeId, cancellationToken);
+            await _publishEndpoint.Publish(new EmployeeFireEvent
+            {
+                EmployeeId = employeeId,
+            });
         }
     }
 }

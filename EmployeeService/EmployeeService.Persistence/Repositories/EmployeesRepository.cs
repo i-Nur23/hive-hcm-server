@@ -101,5 +101,19 @@ namespace EmployeeService.Persistence.Repositories
             await _dbContext.Database
                 .ExecuteSqlAsync($"DELETE FROM \"EmployeeUnits\" WHERE \"UnitId\" = {unitId} AND \"EmployeeId\" = {employeeId}");
         }
+
+        public async Task DeleteAsync(
+            Guid employeeId, 
+            CancellationToken cancellationToken = default)
+        {
+            Employee employee = new Employee 
+            { 
+                Id = employeeId,
+            };
+
+            _dbContext.Employees.Attach(employee);
+            _dbContext.Employees.Remove(employee);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+        }
     }
 }

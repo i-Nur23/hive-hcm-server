@@ -1,4 +1,5 @@
-﻿using EmployeeService.Application.Interfaces;
+﻿using Core.Enums;
+using EmployeeService.Application.Interfaces;
 using EmployeeService.Models.Dtos;
 using EmployeeService.Models.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -98,6 +99,37 @@ namespace EmployeeService.API.Controllers
             CancellationToken cancellationToken)
         {
             await _employeesService.RemoveFromUnitAsync(removeWorkerDto, cancellationToken);
+
+            return Ok();
+        }
+
+        [HttpGet("list")]
+        public async Task<IActionResult> GetListOfEmployees(
+            CancellationToken cancellationToken)
+        {
+            IEnumerable<Employee> workingEmployees = await _employeesService.GetEmployeesByStatusAsync(
+                EmployeeStatus.InCompany,
+                CompanyId,
+                cancellationToken);
+
+            IEnumerable<Employee> firingEmployees = await _employeesService.GetEmployeesByStatusAsync(
+                EmployeeStatus.InCompany,
+                CompanyId,
+                cancellationToken);
+
+            return Ok(new
+            {
+                working = workingEmployees,
+                firing = firingEmployees
+            });
+        }
+
+        [HttpPost("fire")]
+        public async Task<IActionResult> FireEmployeeAsync(
+            Guid employeeId,
+            CancellationToken cancellationToken)
+        {
+            await _employeesService.FireEmployeeAsync(employeeId, cancellationToken);
 
             return Ok();
         }

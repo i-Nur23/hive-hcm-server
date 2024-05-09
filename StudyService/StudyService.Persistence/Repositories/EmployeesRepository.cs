@@ -24,6 +24,21 @@ namespace StudyService.Persistence.Repositories
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
+        public async Task DeleteAsync(
+            Guid employeeId, 
+            CancellationToken cancellationToken = default)
+        {
+            Employee employee = new Employee
+            {
+                Id = employeeId,
+            };
+
+            _dbContext.Employees.Attach(employee);
+            _dbContext.Employees.Remove(employee);
+
+            await _dbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+        }
+
         public async Task<List<Employee>> GetAllAsync(
             Expression<Func<Employee, bool>> condition = null, 
             bool isCoursesIncluded = false, 

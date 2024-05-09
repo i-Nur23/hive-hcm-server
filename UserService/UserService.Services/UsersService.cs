@@ -144,5 +144,12 @@ namespace UserService.Services
 
             return new string(password);
         }
+
+        public async Task DeleteUserAsync(
+            EmployeeFireEvent @event, 
+            CancellationToken cancellationToken = default)
+        {
+            await _usersRepository.DeleteAsync(@event.EmployeeId, cancellationToken);
+        }
     }
 }

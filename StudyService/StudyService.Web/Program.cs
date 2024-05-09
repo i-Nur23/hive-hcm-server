@@ -63,6 +63,7 @@ services.AddMassTransit(x =>
     x.AddConsumer<CompanyCreatedConsumer>();
     x.AddConsumer<NewUserConsumer>();
     x.AddConsumer<UserUpdatedConsumer>();
+    x.AddConsumer<EmployeeFireConsumer>();
 
     x.UsingRabbitMq((context, cfg) =>
     {
@@ -87,6 +88,10 @@ services.AddMassTransit(x =>
             e.ConfigureConsumer<UserUpdatedConsumer>(context);
         });
 
+        cfg.ReceiveEndpoint("fire-employee-study", e =>
+        {
+            e.ConfigureConsumer<EmployeeFireConsumer>(context);
+        });
 
         cfg.ConfigureEndpoints(context);
     });

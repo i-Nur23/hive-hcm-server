@@ -11,5 +11,7 @@ namespace UserService.Persistance.Repositories.Interfaces
         public Task AddAsync(User user, CancellationToken cancellationToken);
 
         public Task UpdateAsync(User user, CancellationToken cancellationToken);
+
+        public Task DeleteAsync(Guid userId, CancellationToken cancellationToken);
     }
 }

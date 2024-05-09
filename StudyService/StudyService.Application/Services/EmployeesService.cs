@@ -1,4 +1,5 @@
-﻿using StudyService.Application.Interfaces;
+﻿using Core.Events;
+using StudyService.Application.Interfaces;
 using StudyService.Models.Entities;
 using StudyService.Persistence;
 using StudyService.Persistence.Repositories.Interfaces;
@@ -52,6 +53,13 @@ namespace StudyService.Application.Services
             };
 
             await _employeesRepository.UpdateAsync(employee, cancellationToken);
+        }
+
+        public async Task DeleteAsync(
+            EmployeeFireEvent @event,
+            CancellationToken cancellationToken = default)
+        {
+            await _employeesRepository.DeleteAsync(@event.EmployeeId, cancellationToken);
         }
     }
 }

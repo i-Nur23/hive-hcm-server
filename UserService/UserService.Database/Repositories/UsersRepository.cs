@@ -21,6 +21,20 @@ namespace UserService.Persistance.Repositories
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
+        public async Task DeleteAsync(
+            Guid userId, 
+            CancellationToken cancellationToken)
+        {
+            User user = new User
+            {
+                Id = userId,
+            };
+
+            _dbContext.Users.Attach(user);
+            _dbContext.Users.Remove(user);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+        }
+
         public async Task<User> GetByEmailAsync(string email, CancellationToken cancellationToken)
         {
             return 

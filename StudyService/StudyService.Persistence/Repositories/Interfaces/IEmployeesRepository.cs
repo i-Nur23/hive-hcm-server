@@ -24,5 +24,9 @@ namespace StudyService.Persistence.Repositories.Interfaces
         public Task UpdateAsync(
             Employee employee,
             CancellationToken cancellationToken = default);
+
+        public Task DeleteAsync(
+            Guid employeeId,
+            CancellationToken cancellationToken = default);
     }
 }

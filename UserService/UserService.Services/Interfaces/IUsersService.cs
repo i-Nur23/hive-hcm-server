@@ -20,5 +20,9 @@ namespace UserService.Services.Interfaces
         public Task<bool> TryCreateUserAsync(
             NewUserEvent newUserEvent,
             CancellationToken cancellationToken = default);
+
+        public Task DeleteUserAsync(
+            EmployeeFireEvent @event,
+            CancellationToken cancellationToken = default);
     }
 }

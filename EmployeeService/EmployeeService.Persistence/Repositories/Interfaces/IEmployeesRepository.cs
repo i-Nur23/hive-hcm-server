@@ -29,5 +29,9 @@ namespace EmployeeService.Persistence.Repositories.Interfaces
             Guid employeeId,
             Guid unitId,
             CancellationToken cancellationToken = default);
+
+        public Task DeleteAsync(
+            Guid employeeId,
+            CancellationToken cancellationToken = default);
     }
 }

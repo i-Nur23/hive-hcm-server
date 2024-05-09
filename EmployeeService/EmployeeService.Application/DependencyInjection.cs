@@ -8,9 +8,9 @@ namespace EmployeeService.Application
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
+            services.AddScoped<IUnitsService, UnitsService>();
             services.AddScoped<IEmployeesService, EmployeesService>();
             services.AddScoped<ICountriesService, CountriesService>();
-            services.AddScoped<IUnitsService, UnitsService>();
 
             return services;
         }

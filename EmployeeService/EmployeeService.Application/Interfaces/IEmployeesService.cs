@@ -1,4 +1,5 @@
-﻿using Core.Events;
+﻿using Core.Enums;
+using Core.Events;
 using EmployeeService.Models.Dtos;
 using EmployeeService.Models.Entities;
 
@@ -42,6 +43,15 @@ namespace EmployeeService.Application.Interfaces
 
         public Task RemoveFromUnitAsync(
             RemoveWorkerDto removeWorkerDto,
+            CancellationToken cancellationToken = default);
+
+        public Task<IEnumerable<Employee>> GetEmployeesByStatusAsync(
+            EmployeeStatus employeeStatus,
+            Guid companyId,
+            CancellationToken cancellationToken = default);
+
+        public Task FireEmployeeAsync(
+            Guid employeeId,
             CancellationToken cancellationToken = default);
     }
 }

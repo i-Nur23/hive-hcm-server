@@ -1,4 +1,6 @@
-﻿namespace StudyService.Application.Interfaces
+﻿using Core.Events;
+
+namespace StudyService.Application.Interfaces
 {
     public interface IEmployeesService
     {
@@ -14,6 +16,10 @@
             string name,
             string surname,
             string email,
+            CancellationToken cancellationToken = default);
+
+        public Task DeleteAsync(
+            EmployeeFireEvent @event,s
             CancellationToken cancellationToken = default);
     }
 }
