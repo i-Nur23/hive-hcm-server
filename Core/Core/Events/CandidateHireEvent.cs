@@ -19,7 +19,5 @@ namespace Core.Events
         public Guid CompanyId { get; set; }
 
         public Role Role { get; set; }
-
-        public EmployeeStatus EmployeeStatus { get; set; }
     }
 }

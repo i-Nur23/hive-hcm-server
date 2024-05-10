@@ -56,6 +56,7 @@ namespace EmployeeService.Persistence.Repositories
             Employee employee, 
             CancellationToken cancellationToken = default)
         {
+            _dbContext.Employees.Attach(employee);
             _dbContext.Employees.Update(employee);
 
             await _dbContext.SaveChangesAsync(cancellationToken);

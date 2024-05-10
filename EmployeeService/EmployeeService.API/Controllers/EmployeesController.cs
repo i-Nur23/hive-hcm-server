@@ -113,7 +113,7 @@ namespace EmployeeService.API.Controllers
                 cancellationToken);
 
             IEnumerable<Employee> firingEmployees = await _employeesService.GetEmployeesByStatusAsync(
-                EmployeeStatus.InCompany,
+                EmployeeStatus.FiringProcess,
                 CompanyId,
                 cancellationToken);
 
@@ -130,6 +130,20 @@ namespace EmployeeService.API.Controllers
             CancellationToken cancellationToken)
         {
             await _employeesService.FireEmployeeAsync(employeeId, cancellationToken);
+
+            return Ok();
+        }
+
+        [HttpPost("status")]
+        public async Task<IActionResult> ChangeStatusAsync(
+            Guid id,
+            EmployeeStatus status, 
+            CancellationToken cancellationToken)
+        {
+            await _employeesService.UpdateStatusAsync(
+                id, 
+                status, 
+                cancellationToken);
 
             return Ok();
         }

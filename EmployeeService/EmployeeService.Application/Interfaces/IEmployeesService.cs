@@ -16,6 +16,11 @@ namespace EmployeeService.Application.Interfaces
             UserUpdatedEvent userUpdated,
             CancellationToken cancellationToken = default);
 
+        public Task UpdateStatusAsync(
+            Guid employeeId,
+            EmployeeStatus status, 
+            CancellationToken cancellationToken = default);
+
         public Task AddCeoAsync(
             CompanyCreatedEvent newCeo,
             CancellationToken cancellationToken = default);

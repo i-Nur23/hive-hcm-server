@@ -306,5 +306,22 @@ namespace EmployeeService.Application.Services
                 EmployeeId = employeeId,
             });
         }
+
+        public async Task UpdateStatusAsync(
+            Guid employeeId,
+            EmployeeStatus status, 
+            CancellationToken cancellationToken = default)
+        {
+            Employee? employee = await _employeesRepository.GetAsync(employee => employee.Id.Equals(employeeId), false, false, cancellationToken);
+
+            if (employee is null)
+            {
+                throw new BadRequestException("Пользователь не найден");
+            }
+
+            employee.EmployeeStatus = status;
+
+            await _employeesRepository.UpdateAsync(employee, cancellationToken);
+        }
     }
 }

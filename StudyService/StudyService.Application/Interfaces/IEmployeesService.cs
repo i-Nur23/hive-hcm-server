@@ -19,7 +19,7 @@ namespace StudyService.Application.Interfaces
             CancellationToken cancellationToken = default);
 
         public Task DeleteAsync(
-            EmployeeFireEvent @event,s
+            EmployeeFireEvent @event,
             CancellationToken cancellationToken = default);
     }
 }
