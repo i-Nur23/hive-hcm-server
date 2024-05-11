@@ -20,7 +20,7 @@ namespace RecruitmentService.Web.Controllers
         {
             var query = new GetAllVacanciesQuery
             {
-                HrId = UserId
+                CompanyId = CompanyId
             };
 
             return Ok(await Mediator.Send(query, cancellationToken));

@@ -5,6 +5,6 @@ namespace RecruitmentService.Application.RequestHandlers.Vacancies.Queries.GetAl
 {
     public class GetAllVacanciesQuery : IRequest<VacanciesVm>
     {
-        public Guid HrId { get; set; }
+        public Guid CompanyId { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace RecruitmentService.Application.RequestHandlers.Vacancies.Queries.GetAl
                 .Include(v => v.Division)
                 .Include(v => v.Responses)
                 .ThenInclude(r => r.Candidate)
-                .Where(v => v.HrId.Equals(request.HrId))
+                .Where(v => v.Division.CompanyId.Equals(request.CompanyId))
                 .ProjectTo<VacancyVM>(_mapper.ConfigurationProvider)
                 .ToList();
 
