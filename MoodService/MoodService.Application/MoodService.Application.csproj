@@ -11,6 +11,10 @@
 		<PackageReference Include="MassTransit" Version="8.2.0" />
 		<PackageReference Include="MediatR" Version="12.1.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\MoodService.Domain\MoodService.Domain.csproj" />
 	</ItemGroup>	
 
 </Project>
