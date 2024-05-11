@@ -8,6 +8,7 @@ using RecruitmentService.Application.Common.Mappings;
 using RecruitmentService.Application.Interfaces;
 using RecruitmentService.Persistance;
 using RecruitmentService.Web.BackgroundServices;
+using RecruitmentService.Web.Consumers;
 using System.Reflection;
 using System.Text;
 
@@ -16,19 +17,7 @@ builder.Logging.AddConsole();
 
 var services = builder.Services;
 
-services.AddMassTransit(x =>
-{
-    x.UsingRabbitMq((context, cfg) =>
-    {
-        cfg.Host("localhost", "/", h =>
-        {
-            h.Username("guest");
-            h.Password("guest");
-        });
-
-        cfg.ConfigureEndpoints(context);
-    });
-});
+services.AddMassTransitExtensions();
 
 services.AddApplication();
 services.AddPersistence(builder.Configuration);

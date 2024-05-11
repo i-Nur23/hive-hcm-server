@@ -11,6 +11,7 @@ namespace RecruitmentService.Web.Consumers
             {
                 x.AddConsumer<UnitCreatedConsumer>();
                 x.AddConsumer<UnitDeletedConsumer>();
+                x.AddConsumer<UnitUpdatedConsumer>();
 
                 x.UsingRabbitMq((context, cfg) =>
                 {
@@ -28,6 +29,11 @@ namespace RecruitmentService.Web.Consumers
                     cfg.ReceiveEndpoint("delete-unit-recruit", e =>
                     {
                         e.ConfigureConsumer<UnitDeletedConsumer>(context);
+                    });
+
+                    cfg.ReceiveEndpoint("update-unit-recruit", e =>
+                    {
+                        e.ConfigureConsumer<UnitUpdatedConsumer>(context);
                     });
 
                     cfg.ConfigureEndpoints(context);

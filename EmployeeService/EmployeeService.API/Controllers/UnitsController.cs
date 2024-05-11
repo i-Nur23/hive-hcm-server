@@ -50,5 +50,15 @@ namespace EmployeeService.API.Controllers
 
             return Ok();
         }
+
+        [HttpPost("update")]
+        public async Task<IActionResult> UpdateUnitAsync(
+            UpdateUnitDto updateUnitDto,
+            CancellationToken cancellationToken)
+        {
+            await _unitsService.UpdateUnitAsync(updateUnitDto, cancellationToken);
+
+            return Ok();
+        }
     }
 }

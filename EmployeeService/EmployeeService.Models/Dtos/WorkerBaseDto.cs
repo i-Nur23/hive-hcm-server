@@ -1,4 +1,6 @@
-﻿namespace EmployeeService.Models.Dtos
+﻿using Core.Enums;
+
+namespace EmployeeService.Models.Dtos
 {
     public class WorkerBaseDto
     {
@@ -11,5 +13,7 @@
         public string Patronymic { get; set; }
 
         public string Email { get; set; }
+
+        public EmployeeStatus Status { get; set; }
     }
 }

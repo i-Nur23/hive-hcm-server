@@ -27,5 +27,9 @@ namespace EmployeeService.Application.Interfaces
         public Task DeleteUnitAsync(
             Guid unitId,
             CancellationToken cancellationToken = default);
+
+        public Task UpdateUnitAsync(
+            UpdateUnitDto updateUnitDto,
+            CancellationToken cancellationToken = default);
     }
 }

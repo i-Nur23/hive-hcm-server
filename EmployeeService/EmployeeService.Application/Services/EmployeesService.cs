@@ -295,9 +295,10 @@ namespace EmployeeService.Application.Services
                 employeeId,
                 cancellationToken);
 
-            foreach (UnitInfoDto unit in leadingUnits)
+            if (leadingUnits.Count() is not 0)
             {
-                await _unitsService.DeleteUnitAsync(unit.Id, cancellationToken);
+                throw new BadRequestException("Перед увольнением сотрудника необходимо, чтобы все руководящие им подразделения были удалены, " +
+                    "или сменить их руководителей.");
             }
 
             await _employeesRepository.DeleteAsync(employeeId, cancellationToken);

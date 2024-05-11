@@ -44,7 +44,8 @@ namespace EmployeeService.Application.Services
                     Name = u.Lead.Name,
                     Surname = u.Lead.Surname,
                     Patronymic = u.Lead.Patronimic,
-                    Email = u.Lead.Email
+                    Email = u.Lead.Email,
+                    Status = u.Lead.EmployeeStatus
                 },
                 Workers = u.Workers.Select(w => new WorkerBaseDto()
                 {
@@ -52,7 +53,8 @@ namespace EmployeeService.Application.Services
                     Name = w.Name,
                     Surname = w.Surname,
                     Patronymic = w.Patronimic,
-                    Email = w.Email
+                    Email = w.Email,
+                    Status = w.EmployeeStatus
                 }).ToList(),
                 ChildUnits = u.ChildUnits.Select(cu => new UnitInfoDto() 
                 { 
@@ -64,7 +66,8 @@ namespace EmployeeService.Application.Services
                         Name = cu.Lead.Name,
                         Surname = cu.Lead.Surname,
                         Patronymic = cu.Lead.Patronimic,
-                        Email = cu.Lead.Email
+                        Email = cu.Lead.Email,
+                        Status = cu.Lead.EmployeeStatus
                     },
                 }).ToList(),
             });
@@ -172,7 +175,8 @@ namespace EmployeeService.Application.Services
                     Name = u.Lead.Name,
                     Surname = u.Lead.Surname,
                     Patronymic = u.Lead.Patronimic,
-                    Email = u.Lead.Email
+                    Email = u.Lead.Email,
+                    Status = u.Lead.EmployeeStatus
                 },
                 Workers = u.Workers.Select(w => new WorkerBaseDto()
                 {
@@ -180,7 +184,8 @@ namespace EmployeeService.Application.Services
                     Name = w.Name,
                     Surname = w.Surname,
                     Patronymic = w.Patronimic,
-                    Email = w.Email
+                    Email = w.Email,
+                    Status = w.EmployeeStatus
                 }).ToList(),
                 ChildUnits = u.ChildUnits.Select(cu => new UnitInfoDto()
                 {
@@ -192,9 +197,36 @@ namespace EmployeeService.Application.Services
                         Name = cu.Lead.Name,
                         Surname = cu.Lead.Surname,
                         Patronymic = cu.Lead.Patronimic,
-                        Email = cu.Lead.Email
+                        Email = cu.Lead.Email,
+                        Status = cu.Lead.EmployeeStatus
                     },
                 }).ToList(),
+            });
+        }
+
+        public async Task UpdateUnitAsync(
+            UpdateUnitDto updateUnitDto, 
+            CancellationToken cancellationToken = default)
+        {
+            Unit? unit = await _unitsRepository.GetUnitAsync(
+                unit => unit.Id.Equals(updateUnitDto.UnitId),
+                cancellationToken);
+
+            if (unit == null)
+            {
+                throw new InvalidOperationException("Unit was not found");
+            }
+
+            unit.Name = updateUnitDto.Name;
+            unit.LeadId = updateUnitDto.LeadId;
+
+            await _unitsRepository.UpdateRangeAsync(cancellationToken, unit);
+
+            await _publishEndpoint.Publish(new UnitUpdatedEvent
+            {
+                LeadId = updateUnitDto.LeadId,
+                Name = updateUnitDto.Name,
+                UnitId = updateUnitDto.UnitId
             });
         }
     }
