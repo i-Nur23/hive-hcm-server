@@ -21,6 +21,7 @@ namespace MoodService.Application.RequestHandlers.Assessments.Commands.CreateAss
             Assessment assessment = _mapper.Map<Assessment>(request.Assessment);
 
             assessment.RatedAt = DateTime.UtcNow;
+            assessment.EmployeeId = request.EmployeeId;
 
             await _dbContext.Assessments.AddAsync(assessment, cancellationToken);
             await _dbContext.SaveChangesAsync(cancellationToken);

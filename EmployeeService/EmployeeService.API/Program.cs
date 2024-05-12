@@ -68,6 +68,7 @@ services.AddMassTransit(x =>
     x.AddConsumer<CountriesScrapedConsumer>();
     x.AddConsumer<UserUpdatedConsumer>();
     x.AddConsumer<CandidateHireConsumer>();
+    x.AddConsumer<GetLeadingEmployeesConsumer>();
 
     x.AddRequestClient<NewUserEvent>();
 

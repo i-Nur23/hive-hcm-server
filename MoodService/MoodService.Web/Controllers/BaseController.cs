@@ -1,5 +1,5 @@
 ﻿using Core.Exceptions;
-using MassTransit.Mediator;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
