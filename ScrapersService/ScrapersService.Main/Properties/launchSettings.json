@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ScrapersService.Main": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

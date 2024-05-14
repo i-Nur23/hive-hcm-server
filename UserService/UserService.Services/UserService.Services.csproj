@@ -12,9 +12,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Core\Core.csproj" />
     <ProjectReference Include="..\UserService.Database\UserService.Persistance.csproj" />
     <ProjectReference Include="..\UserService.Models\UserService.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Core">
+      <HintPath>..\Core\Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+	  <HintPath>..\Core\Newtonsoft.Json.dll</HintPath>
+	</Reference>
   </ItemGroup>
 
 </Project>
