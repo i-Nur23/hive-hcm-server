@@ -15,9 +15,15 @@ func main() {
 		AllowHeaders: "*",
 	}))
 
-	app.Static("/", "./public")
+	app.Static("/", "./media")
 
 	app.Post("/upload", controllers.UploadImage)
+
+	app.Get("/", func(c fiber.Ctx) error {
+		return c.JSON(fiber.Map{
+			"message": "Hello World",
+		})
+	})
 
 	app.Listen(":5000")
 }

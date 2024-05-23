@@ -7,7 +7,7 @@ namespace RecruitmentService.Domain.Enums
         [Name("Полный день")]
         Full,
 
-        [Name("Сменный грфаик")]
+        [Name("Сменный график")]
         Shift,
 
         [Name("Удаленная работа")]

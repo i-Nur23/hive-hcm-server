@@ -1,21 +1,19 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 8081
-EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["RecruitmentService.Web/RecruitmentService.Web.csproj", "RecruitmentService.Web/"]
-COPY ["RecruitmentService.Application/RecruitmentService.Application.csproj", "RecruitmentService.Application/"]
-COPY ["RecruitmentService.Domain/RecruitmentService.Domain.csproj", "RecruitmentService.Domain/"]
-COPY ["RecruitmentService.Persistance/RecruitmentService.Persistance.csproj", "RecruitmentService.Persistance/"]
-RUN dotnet restore "./RecruitmentService.Web/RecruitmentService.Web.csproj"
+COPY ["Server/RecruitmentService/RecruitmentService.Web/RecruitmentService.Web.csproj", "Server/RecruitmentService/RecruitmentService.Web/"]
+COPY ["Server/RecruitmentService/RecruitmentService.Application/RecruitmentService.Application.csproj", "Server/RecruitmentService/RecruitmentService.Application/"]
+COPY ["Server/RecruitmentService/RecruitmentService.Domain/RecruitmentService.Domain.csproj", "Server/RecruitmentService/RecruitmentService.Domain/"]
+COPY ["Server/RecruitmentService/RecruitmentService.Persistance/RecruitmentService.Persistance.csproj", "Server/RecruitmentService/RecruitmentService.Persistance/"]
+RUN dotnet restore "Server/RecruitmentService/RecruitmentService.Web/RecruitmentService.Web.csproj"
 COPY . .
-WORKDIR "/src/RecruitmentService.Web"
-RUN dotnet build "./RecruitmentService.Web.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/Server/RecruitmentService/RecruitmentService.Web"
+RUN dotnet build "RecruitmentService.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "./RecruitmentService.Web.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "RecruitmentService.Web.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app

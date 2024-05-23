@@ -19,12 +19,6 @@ namespace MoodService.Web.Consumers
 
                 x.UsingRabbitMq((context, cfg) =>
                 {
-                    cfg.Host("localhost", "/", h =>
-                    {
-                        h.Username("guest");
-                        h.Password("guest");
-                    });
-
                     cfg.ReceiveEndpoint("company-created-mood", e =>
                     {
                         e.ConfigureConsumer<CompanyCreatedConsumer>(context);

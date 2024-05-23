@@ -15,12 +15,6 @@ namespace RecruitmentService.Web.Consumers
 
                 x.UsingRabbitMq((context, cfg) =>
                 {
-                    cfg.Host("localhost", "/", h =>
-                    {
-                        h.Username("guest");
-                        h.Password("guest");
-                    });
-
                     cfg.ReceiveEndpoint("create-unit-recruit", e =>
                     {
                         e.ConfigureConsumer<UnitCreatedConsumer>(context);

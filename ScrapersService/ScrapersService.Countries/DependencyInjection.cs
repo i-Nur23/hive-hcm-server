@@ -20,12 +20,6 @@ namespace ScrapersService.Countries
             {
                 x.UsingRabbitMq((context, cfg) =>
                 {
-                    cfg.Host("localhost", "/", h =>
-                    {
-                        h.Username("guest");
-                        h.Password("guest");
-                    });
-
                     cfg.ConfigureEndpoints(context);
                 });
             });

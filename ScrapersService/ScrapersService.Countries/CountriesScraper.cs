@@ -1,35 +1,47 @@
 ﻿using Core.Dtos.Scrapers.Countries;
 using Core.Events;
 using MassTransit;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ScrapersService.Countries.Clients.Interfaces;
-using System.ComponentModel;
 
 namespace ScrapersService.Countries
 {
     public class CountriesScraper : BackgroundService
     {
-        private readonly ICountriesClient _countriesClient;
         private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IServiceProvider _serviceProvider;
 
         public CountriesScraper(
-            ICountriesClient countriesClient,
-            IPublishEndpoint publishEndpoint)
+            IPublishEndpoint publishEndpoint,
+            IServiceProvider serviceProvider)
         {
-            _countriesClient = countriesClient;
             _publishEndpoint = publishEndpoint; 
+            _serviceProvider = serviceProvider;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            IEnumerable<CountryDto> countries = await _countriesClient.GetAllAsync(stoppingToken);
-
-            await _publishEndpoint.Publish(new CountriesScrapedEvent()
+            while (!stoppingToken.IsCancellationRequested)   
             {
-                Countries = countries
-            });
+                IServiceScope serviceScope = _serviceProvider.CreateScope();
+                ICountriesClient countriesClient = serviceScope.ServiceProvider.GetRequiredService<ICountriesClient>();
 
-            await Task.Delay(TimeSpan.FromDays(7));
+                try
+                {
+                    IEnumerable<CountryDto> countries = await countriesClient.GetAllAsync(stoppingToken);
+
+                    await _publishEndpoint.Publish(new CountriesScrapedEvent()
+                    {
+                        Countries = countries
+                    });    
+                }
+                finally
+                {
+                    serviceScope.Dispose();
+                    await Task.Delay(TimeSpan.FromDays(7));   
+                }   
+            }
         }
     }
 }

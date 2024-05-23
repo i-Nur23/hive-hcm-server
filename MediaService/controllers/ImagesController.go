@@ -17,7 +17,7 @@ func UploadImage(c fiber.Ctx) error {
 
 	image := fmt.Sprintf("%s.jpg", id)
 
-	err = c.SaveFile(file, fmt.Sprintf("./public/worker/%s", image))
+	err = c.SaveFile(file, fmt.Sprintf("./media/worker/%s", image))
 
 	if err != nil {
 		log.Println("Error in saving Image :", err)

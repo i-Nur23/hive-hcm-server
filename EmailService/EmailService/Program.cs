@@ -27,12 +27,6 @@ class Program
             {
                 cfg.UseMessageRetry(r => r.Immediate(5));
 
-                cfg.Host("localhost", "/", h =>
-                {
-                    h.Username("guest");
-                    h.Password("guest");
-                });
-
                 cfg.ConfigureEndpoints(context);
             });
         });

@@ -29,4 +29,10 @@
     <ProjectReference Include="..\EmployeeService.Persistence\EmployeeService.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Core">
+      <HintPath>..\..\Core\Core\bin\Release\net8.0\publish\Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
