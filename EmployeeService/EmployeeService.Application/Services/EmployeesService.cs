@@ -277,11 +277,13 @@ namespace EmployeeService.Application.Services
         public async Task<IEnumerable<Employee>> GetEmployeesByStatusAsync(
             EmployeeStatus employeeStatus,
             Guid companyId,
+            Guid userId,
             CancellationToken cancellationToken = default)
         {
             return await _employeesRepository.GetAllAsync(
                 employee => employee.EmployeeStatus.Equals(employeeStatus) && 
-                employee.CompanyId.Equals(companyId),
+                employee.CompanyId.Equals(companyId) &&
+                !employee.Id.Equals(userId),
                 false,
                 false,
                 cancellationToken);

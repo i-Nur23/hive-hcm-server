@@ -110,11 +110,13 @@ namespace EmployeeService.API.Controllers
             IEnumerable<Employee> workingEmployees = await _employeesService.GetEmployeesByStatusAsync(
                 EmployeeStatus.InCompany,
                 CompanyId,
+                UserId,
                 cancellationToken);
 
             IEnumerable<Employee> firingEmployees = await _employeesService.GetEmployeesByStatusAsync(
                 EmployeeStatus.FiringProcess,
                 CompanyId,
+                UserId,
                 cancellationToken);
 
             return Ok(new

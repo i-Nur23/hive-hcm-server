@@ -53,6 +53,7 @@ namespace EmployeeService.Application.Interfaces
         public Task<IEnumerable<Employee>> GetEmployeesByStatusAsync(
             EmployeeStatus employeeStatus,
             Guid companyId,
+            Guid userId,
             CancellationToken cancellationToken = default);
 
         public Task FireEmployeeAsync(
