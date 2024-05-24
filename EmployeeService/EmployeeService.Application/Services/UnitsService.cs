@@ -150,6 +150,14 @@ namespace EmployeeService.Application.Services
             Guid unitId, 
             CancellationToken cancellationToken = default)
         {
+            IEnumerable<Unit> childUnits = await _unitsRepository.GetUnitsAsync(
+                unit => unit.ParentUnitId.Equals(unitId));
+
+            foreach (Unit childUnit in childUnits)
+            {
+                await DeleteUnitAsync(childUnit.Id, cancellationToken);
+            }
+
             await _unitsRepository.DeleteAsync(unitId, cancellationToken);
 
             await _publishEndpoint.Publish(new UnitDeletedEvent

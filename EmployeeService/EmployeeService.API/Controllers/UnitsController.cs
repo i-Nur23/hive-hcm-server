@@ -41,7 +41,7 @@ namespace EmployeeService.API.Controllers
             return Ok(units);
         }
 
-        [HttpDelete("{unitId}")]
+        [HttpPost("remove/{unitId}")]
         public async Task<IActionResult> DeleteUnitAsync(
             Guid unitId,
             CancellationToken cancellationToken)
