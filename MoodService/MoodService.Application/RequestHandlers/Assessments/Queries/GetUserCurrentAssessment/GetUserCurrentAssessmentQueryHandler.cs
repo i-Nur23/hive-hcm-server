@@ -21,8 +21,8 @@ namespace MoodService.Application.RequestHandlers.Assessments.Queries.GetUserCur
         {
             DateTime now = DateTime.UtcNow;
 
-            DateTime startDate = now.AddDays(-(int)now.DayOfWeek - 6).Date;
-            DateTime endDate = now.AddDays(-(int)now.DayOfWeek + 1).Date;
+            DateTime startDate = now.AddDays(-(int)now.DayOfWeek + 1).Date;
+            DateTime endDate = now;
 
             Assessment? assessment = await _dbContext.Assessments.FirstOrDefaultAsync(
                 a => 

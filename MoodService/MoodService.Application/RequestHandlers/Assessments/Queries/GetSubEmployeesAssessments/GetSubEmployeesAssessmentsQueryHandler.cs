@@ -60,8 +60,8 @@ namespace MoodService.Application.RequestHandlers.Assessments.Queries.GetSubEmpl
 
             DateTime now = DateTime.UtcNow;
 
-            DateTime startDate = now.AddDays(-(int)now.DayOfWeek - 13).Date;
-            DateTime endDate = now.AddDays(-(int)now.DayOfWeek - 6).Date;
+            DateTime startDate = now.AddDays(-(int)now.DayOfWeek - 6).Date;
+            DateTime endDate = now.AddDays(-(int)now.DayOfWeek + 1).Date;
 
             List<Assessment> lastWeekAssessments = await _dbContext.Assessments.
                 Where(
@@ -86,6 +86,7 @@ namespace MoodService.Application.RequestHandlers.Assessments.Queries.GetSubEmpl
             statisticsVM.AverageTranquility = lastWeekAssessments.Average(a => (int)a.Tranquility);
             statisticsVM.AverageTimeManagement = lastWeekAssessments.Average(a => (int)a.TimeManagement);
             statisticsVM.AverageCommunications = lastWeekAssessments.Average(a => (int)a.Communications);
+            statisticsVM.TotalCount = lastWeekAssessments.Count();
 
             return statisticsVM;
         }

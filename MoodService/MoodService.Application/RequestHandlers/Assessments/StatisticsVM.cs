@@ -17,5 +17,7 @@ namespace MoodService.Application.RequestHandlers.Assessments
         public IEnumerable<string> Notes { get; set; }
 
         public bool IsEmpty { get; set; }
+
+        public int TotalCount { get; set; }
     }
 }
