@@ -81,6 +81,13 @@ namespace UserService.Services
                 throw new NotFoundException("Пользователь не найден");
             }
 
+            User userWithSameEmail = await _usersRepository.GetByEmailAsync(updateUserDto.Email, cancellationToken);
+
+            if (userWithSameEmail is not null)
+            {
+                throw new BadRequestException("Email занят");
+            }
+
             user.Email = updateUserDto.Email;
             user.Name = updateUserDto.Name;
             user.Surname = updateUserDto.Surname;

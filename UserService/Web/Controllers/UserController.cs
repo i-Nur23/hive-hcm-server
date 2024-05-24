@@ -50,6 +50,8 @@ namespace UserService.Web.Controllers
             {
                 await _databaseRepository.StartTransactionAsync(cancellationToken);
 
+
+
                 await _usersService.UpdateAsync(UserId, updateUserDto, cancellationToken);
 
                 var response = await _requestClient.GetResponse<RequestResult>(new UserUpdatedEvent()
@@ -81,7 +83,7 @@ namespace UserService.Web.Controllers
 
                     throw exception;
                 }
-            }
+            }  
             catch (Exception)
             {
                 await _databaseRepository.RollbackTransactionAsync(cancellationToken);
